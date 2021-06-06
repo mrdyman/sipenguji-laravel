@@ -65,10 +65,10 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Product</th>
-                                        <th>Price</th>
-                                        <th>Sales</th>
-                                        <th>More</th>
+                                        <th>Nama</th>
+                                        <th>Alamat</th>
+                                        <th>Jumlah Ruangan</th>
+                                        <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -215,10 +215,10 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Product</th>
-                                        <th>Price</th>
-                                        <th>Sales</th>
-                                        <th>More</th>
+                                        <th>Rute</th>
+                                        <th>Jarak</th>
+                                        <th>Koordinat</th>
+                                        <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
