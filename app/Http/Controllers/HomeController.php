@@ -14,7 +14,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $gedung = Http::get('http://localhost/sipenguji-api/api/ruangan');
+        $gedung = Http::get('http://localhost/sipenguji-api/api/gedung');
         $response = $gedung->json();
         $dataGedung = $response['data'];
 
@@ -43,8 +43,10 @@ class HomeController extends Controller
      */
     public function store(Request $request)
     {
-        $client = Http::post('http://localhost/sipenguji-api/api/ruangan', [
+        $client = Http::post('http://localhost/sipenguji-api/api/gedung', [
             'nama' => $request->nama,
+            'alamat' => $request->alamat,
+            'jumlah_ruangan' => $request->jumlah_ruangan,
             'latitude' => $request->latitude,
             'longitude' => $request->longitude
         ]);
@@ -52,7 +54,7 @@ class HomeController extends Controller
             return redirect('home')->with('status', 'Data berhasil ditambahkan!');
         } else {
             $errorCode = $client->status();
-            return redirect('home')->with('status', 'Terdapat kesalahan! ' . $errorCode);
+            return redirect('home')->with('status', 'Terdapat kesalahan! Error Code:' . $errorCode);
         }
     }
 

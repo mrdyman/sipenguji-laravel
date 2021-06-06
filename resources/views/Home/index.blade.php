@@ -78,8 +78,8 @@
                                         <td>
                                             {{ $gedung['nama'] }}
                                         </td>
-                                        <td>$13 USD</td>
-                                        <td>hmmm</td>
+                                        <td>{{ $gedung['alamat'] }}</td>
+                                        <td>{{ $gedung['jumlah_ruangan'] }}</td>
                                         <td>
                                             <a href="" class="badge badge-warning">detail</a>
                                         </td>
@@ -93,7 +93,7 @@
                 </div>
                 <!-- /.col-md-6 -->
                 <div class="col-lg-6">
-                    <div class="card" style="height: 350px;">
+                    <div class="card" style="height: 400px;">
                         <div class="card-header border-0">
                             <div class="d-flex justify-content-between">
                                 <h3 class="card-title">Tambah Data</h3>
@@ -123,7 +123,7 @@
                                 <div class="form-group row mb-2">
                                     <label for="jumlah-ruangan" class="col-sm-2 col-form-label col-form-label-sm">Jumlah ruangan</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control form-control-sm" id="jumlah-ruangan" placeholder="Jumlah Ruangan" name="jumlah-ruangan">
+                                        <input type="text" class="form-control form-control-sm" id="jumlah-ruangan" placeholder="Jumlah Ruangan" name="jumlah_ruangan">
                                     </div>
                                 </div>
                                 <div class="form-group row mb-2">
