@@ -169,23 +169,24 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <form method="post" action="">
+                            <form method="post" action="{{ url('home') }}">
+                                @csrf
                                 <div class="form-group row mb-2">
                                     <label for="Nama" class="col-sm-2 col-form-label col-form-label-sm">Nama</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control form-control-sm" id="Nama" placeholder="Nama Gedung">
+                                        <input type="text" class="form-control form-control-sm" id="Nama" placeholder="Nama Gedung" name="nama">
                                     </div>
                                 </div>
                                 <div class="form-group row mb-2">
                                     <label for="latitude" class="col-sm-2 col-form-label col-form-label-sm">Latitude</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control form-control-sm" id="latitude" placeholder="Latitude">
+                                        <input type="text" class="form-control form-control-sm" id="latitude" placeholder="Latitude" name="latitude">
                                     </div>
                                 </div>
                                 <div class="form-group row mb-2">
                                     <label for="longitude" class="col-sm-2 col-form-label col-form-label-sm">Longitude</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control form-control-sm" id="longitude" placeholder="Longitude">
+                                        <input type="text" class="form-control form-control-sm" id="longitude" placeholder="Longitude" name="longitude">
                                     </div>
                                 </div>
                                 <div class="form-group row">

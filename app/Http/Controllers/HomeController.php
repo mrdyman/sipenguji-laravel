@@ -23,7 +23,7 @@ class HomeController extends Controller
      */
     public function create()
     {
-        //
+        // 
     }
 
     /**
@@ -34,7 +34,7 @@ class HomeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // request ke api untuk tambah data
     }
 
     /**
