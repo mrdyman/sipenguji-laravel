@@ -14,6 +14,9 @@
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ url('assets/vendor') }}/dist/css/adminlte.min.css">
+    <!-- Maps Script -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMiqfHPAc3Mn_JIjC5JOa0D85mGFpbUSs"></script>
+    <script src="{{ url('assets/vendor') }}/dist/js/scriptmaps.js"></script>
 </head>
 <!--
 `body` tag options:
@@ -25,7 +28,7 @@
   * sidebar-mini
 -->
 
-<body class="hold-transition sidebar-mini layout-navbar-fixed layout-fixed">
+<body class="hold-transition sidebar-mini layout-navbar-fixed layout-fixed" onload="initMap()">
     <div class="wrapper">
         <!-- Navbar -->
         <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -177,12 +180,9 @@
     <!-- AdminLTE -->
     <script src="{{ url('assets/vendor') }}/dist/js/adminlte.js"></script>
 
-    <!-- OPTIONAL SCRIPTS -->
-    <script src="{{ url('assets/vendor') }}/plugins/chart.js/Chart.min.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="{{ url('assets/vendor') }}/dist/js/demo.js"></script>
-    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-    <script src="{{ url('assets/vendor') }}/dist/js/pages/dashboard3.js"></script>
+
 </body>
 
 </html>
