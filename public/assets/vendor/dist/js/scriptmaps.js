@@ -5,24 +5,19 @@ function initMap() {
     mapTypeId: google.maps.MapTypeId.ROADMAP,
   };
 
-  // tampilkan maps
   map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
-  // google.maps.event.addListener(map, "click", function (event) {
-  //   if (sambung_titik == true) {
-  //     if (tempattitik == 0) {
-  //       alert("Tentukan Titik Awal!");
-  //     } else {
-  //       tempattitik[0] = garisx.getPath();
-  //       tempattitik.push(event.latLng);
-  //       console.log(tempattitik);
+  google.maps.event.addListener(map, "click", function (event) {
+    let latitude = event.latLng.lat();
+    let longitude = event.latLng.lng();
+    $("#latitude").val(latitude);
+    $("#longitude").val(longitude);
 
-  //       poly.push(event.latLng.lat() + "," + event.latLng.lng());
-  //       console.log(poly);
-  //     }
-  //   } else {
-  //     alert("Posisi Kordinat : " + event.latLng);
-  //   }
-  // });
-  var bounds = new google.maps.LatLngBounds();
+    var icon = "../assets/vendor/marker.png";
+    var marker = new google.maps.Marker({
+      position: event.latLng,
+      map: map,
+      icon: icon,
+    });
+  });
 }
