@@ -17,5 +17,9 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
+// home
 Route::get('/', 'HomeController@index');
 Route::resource('home', 'HomeController');
+
+// polyline
+Route::resource('polyline', 'PolylineController');
