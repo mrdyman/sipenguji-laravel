@@ -72,87 +72,19 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach($gedung as $gedung)
                                     <tr>
-                                        <td>1</td>
+                                        <td>{{ $loop->iteration }}</td>
                                         <td>
-                                            <img src="{{ url('assets/vendor') }}/dist/img/default-150x150.png" alt="Product 1" class="img-circle img-size-32 mr-2">
-                                            Some Product
+                                            {{ $gedung['nama'] }}
                                         </td>
                                         <td>$13 USD</td>
+                                        <td>hmmm</td>
                                         <td>
-                                            <small class="text-success mr-1">
-                                                <i class="fas fa-arrow-up"></i>
-                                                12%
-                                            </small>
-                                            12,000 Sold
-                                        </td>
-                                        <td>
-                                            <a href="#" class="text-muted">
-                                                <i class="fas fa-search"></i>
-                                            </a>
+                                            <a href="" class="badge badge-warning">detail</a>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>
-                                            <img src="{{ url('assets/vendor') }}/dist/img/default-150x150.png" alt="Product 1" class="img-circle img-size-32 mr-2">
-                                            Another Product
-                                        </td>
-                                        <td>$29 USD</td>
-                                        <td>
-                                            <small class="text-warning mr-1">
-                                                <i class="fas fa-arrow-down"></i>
-                                                0.5%
-                                            </small>
-                                            123,234 Sold
-                                        </td>
-                                        <td>
-                                            <a href="#" class="text-muted">
-                                                <i class="fas fa-search"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>
-                                            <img src="{{ url('assets/vendor') }}/dist/img/default-150x150.png" alt="Product 1" class="img-circle img-size-32 mr-2">
-                                            Amazing Product
-                                        </td>
-                                        <td>$1,230 USD</td>
-                                        <td>
-                                            <small class="text-danger mr-1">
-                                                <i class="fas fa-arrow-down"></i>
-                                                3%
-                                            </small>
-                                            198 Sold
-                                        </td>
-                                        <td>
-                                            <a href="#" class="text-muted">
-                                                <i class="fas fa-search"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td>
-                                            <img src="{{ url('assets/vendor') }}/dist/img/default-150x150.png" alt="Product 1" class="img-circle img-size-32 mr-2">
-                                            Perfect Item
-                                            <span class="badge bg-danger">NEW</span>
-                                        </td>
-                                        <td>$199 USD</td>
-                                        <td>
-                                            <small class="text-success mr-1">
-                                                <i class="fas fa-arrow-up"></i>
-                                                63%
-                                            </small>
-                                            87 Sold
-                                        </td>
-                                        <td>
-                                            <a href="#" class="text-muted">
-                                                <i class="fas fa-search"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -161,12 +93,17 @@
                 </div>
                 <!-- /.col-md-6 -->
                 <div class="col-lg-6">
-                    <div class="card" style="height: 300px;">
+                    <div class="card" style="height: 350px;">
                         <div class="card-header border-0">
                             <div class="d-flex justify-content-between">
                                 <h3 class="card-title">Tambah Data</h3>
                                 <a href="javascript:void(0);">View Report</a>
                             </div>
+                            @if(session('status'))
+                            <div class="alert alert-success">
+                                {{ session('status') }}
+                            </div>
+                            @endif
                         </div>
                         <div class="card-body">
                             <form method="post" action="{{ url('home') }}">
@@ -175,6 +112,18 @@
                                     <label for="Nama" class="col-sm-2 col-form-label col-form-label-sm">Nama</label>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control form-control-sm" id="Nama" placeholder="Nama Gedung" name="nama">
+                                    </div>
+                                </div>
+                                <div class="form-group row mb-2">
+                                    <label for="alamat" class="col-sm-2 col-form-label col-form-label-sm">Alamat</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control form-control-sm" id="alamat" placeholder="Alamat Gedung" name="alamat">
+                                    </div>
+                                </div>
+                                <div class="form-group row mb-2">
+                                    <label for="jumlah-ruangan" class="col-sm-2 col-form-label col-form-label-sm">Jumlah ruangan</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control form-control-sm" id="jumlah-ruangan" placeholder="Jumlah Ruangan" name="jumlah-ruangan">
                                     </div>
                                 </div>
                                 <div class="form-group row mb-2">
@@ -223,87 +172,21 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach($polyline as $polyline)
                                     <tr>
-                                        <td>1</td>
+                                        <td>{{ $loop->iteration }}</td>
                                         <td>
-                                            <img src="{{ url('assets/vendor') }}/dist/img/default-150x150.png" alt="Product 1" class="img-circle img-size-32 mr-2">
-                                            Some Product
+                                            {{ $polyline['jalur'] }}
                                         </td>
-                                        <td>$13 USD</td>
+                                        <td>{{ $polyline['jarak'] }}</td>
                                         <td>
-                                            <small class="text-success mr-1">
-                                                <i class="fas fa-arrow-up"></i>
-                                                12%
-                                            </small>
-                                            12,000 Sold
+                                            {{ $polyline['koordinat'] }}
                                         </td>
                                         <td>
-                                            <a href="#" class="text-muted">
-                                                <i class="fas fa-search"></i>
-                                            </a>
+                                            <a href="" class="badge badge-success">detail</a>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>
-                                            <img src="{{ url('assets/vendor') }}/dist/img/default-150x150.png" alt="Product 1" class="img-circle img-size-32 mr-2">
-                                            Another Product
-                                        </td>
-                                        <td>$29 USD</td>
-                                        <td>
-                                            <small class="text-warning mr-1">
-                                                <i class="fas fa-arrow-down"></i>
-                                                0.5%
-                                            </small>
-                                            123,234 Sold
-                                        </td>
-                                        <td>
-                                            <a href="#" class="text-muted">
-                                                <i class="fas fa-search"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>
-                                            <img src="{{ url('assets/vendor') }}/dist/img/default-150x150.png" alt="Product 1" class="img-circle img-size-32 mr-2">
-                                            Amazing Product
-                                        </td>
-                                        <td>$1,230 USD</td>
-                                        <td>
-                                            <small class="text-danger mr-1">
-                                                <i class="fas fa-arrow-down"></i>
-                                                3%
-                                            </small>
-                                            198 Sold
-                                        </td>
-                                        <td>
-                                            <a href="#" class="text-muted">
-                                                <i class="fas fa-search"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td>
-                                            <img src="{{ url('assets/vendor') }}/dist/img/default-150x150.png" alt="Product 1" class="img-circle img-size-32 mr-2">
-                                            Perfect Item
-                                            <span class="badge bg-danger">NEW</span>
-                                        </td>
-                                        <td>$199 USD</td>
-                                        <td>
-                                            <small class="text-success mr-1">
-                                                <i class="fas fa-arrow-up"></i>
-                                                63%
-                                            </small>
-                                            87 Sold
-                                        </td>
-                                        <td>
-                                            <a href="#" class="text-muted">
-                                                <i class="fas fa-search"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

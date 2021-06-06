@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class HomeController extends Controller
 {
@@ -13,7 +14,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home.index');
+        $gedung = Http::get('http://localhost/sipenguji-api/api/ruangan');
+        $response = $gedung->json();
+        $dataGedung = $response['data'];
+
+        $polyline = Http::get('http://localhost/sipenguji-api/api/polyline');
+        $polylineResponse = $polyline->json();
+        $dataPolyline = $polylineResponse['data'];
+
+        return view('home.index', ['gedung' => $dataGedung, 'polyline' => $dataPolyline]);
     }
 
     /**
@@ -34,7 +43,17 @@ class HomeController extends Controller
      */
     public function store(Request $request)
     {
-        // request ke api untuk tambah data
+        $client = Http::post('http://localhost/sipenguji-api/api/ruangan', [
+            'nama' => $request->nama,
+            'latitude' => $request->latitude,
+            'longitude' => $request->longitude
+        ]);
+        if ($client->successful()) {
+            return redirect('home')->with('status', 'Data berhasil ditambahkan!');
+        } else {
+            $errorCode = $client->status();
+            return redirect('home')->with('status', 'Terdapat kesalahan! ' . $errorCode);
+        }
     }
 
     /**
