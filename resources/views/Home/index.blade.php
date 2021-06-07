@@ -29,21 +29,14 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="card">
-                        <div class="card-header border-0">
+                        <div class="card-header border-0 pb-0">
                             <div class="d-flex justify-content-between">
                                 <h3 class="card-title">Peta Gedung Ujian</h3>
-                                <a href="javascript:void(0);">Tampilkan Polyline</a>
+                                <button class="btn btn-sm btn-flat btn-success" id="showPoly">Tampilkan Polyline</button>
                             </div>
                         </div>
-                        <div class="card-body">
-
+                        <div class="card-body pt-2">
                             <div id="map" style="height: 300px;"></div>
-
-                            <div class="d-flex flex-row justify-content-end">
-                                <span class="mr-2">
-                                    <i class="fas fa-square text-primary"></i> Baru Ditambahkan
-                                </span>
-                            </div>
                         </div>
                     </div>
                     <!-- /.card -->
@@ -97,10 +90,9 @@
                         <div class="card-header border-0">
                             <div class="d-flex justify-content-between">
                                 <h3 class="card-title">Tambah Data</h3>
-                                <a href="javascript:void(0);">View Report</a>
                             </div>
                             @if(session('status'))
-                            <div class="alert alert-success">
+                            <div class="alert alert-success col-sm-3">
                                 {{ session('status') }}
                             </div>
                             @endif
@@ -150,7 +142,7 @@
 
                     <div class="card">
                         <div class="card-header border-0">
-                            <h3 class="card-title">Rute</h3>
+                            <h3 class="card-title">Data Ruangan Ujian</h3>
                             <div class="card-tools">
                                 <a href="#" class="btn btn-tool btn-sm">
                                     <i class="fas fa-download"></i>
