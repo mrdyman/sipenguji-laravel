@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="{{ url('assets/vendor') }}/dist/css/adminlte.min.css">
     <!-- Maps Script -->
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMiqfHPAc3Mn_JIjC5JOa0D85mGFpbUSs"></script>
-    <script src="{{ url('assets/vendor') }}/dist/js/scriptmaps.js"></script>
+    <script src="{{ url('assets/vendor') }}/dist/js/myscript.js"></script>
 </head>
 <!--
 `body` tag options:
