@@ -1,3 +1,5 @@
+var icon = "../assets/vendor/marker.png";
+
 function initMap() {
   // display map
   var mapOptions = {
@@ -14,7 +16,6 @@ function initMap() {
     $("#latitude").val(latitude);
     $("#longitude").val(longitude);
 
-    var icon = "../assets/vendor/marker.png";
     var marker = new google.maps.Marker({
       position: event.latLng,
       map: map,
@@ -33,9 +34,39 @@ function getMarker() {
     method: "get",
     dataType: "json",
     success: function (data) {
-      console.log(data);
+      for (var i = 0; i < data.length; i++) {
+        displayMarker(data[i]);
+      }
     },
   });
 }
 
-function displayMarker() {}
+function displayMarker(data) {
+  var infowindow = new google.maps.InfoWindow();
+  var content =
+    '<div class="infoWindow"><strong>' +
+    data.nama +
+    "</strong>" +
+    "<br/>" +
+    data.latitude +
+    "<br/>" +
+    data.longitude +
+    "</div>";
+
+  var position = new google.maps.LatLng(
+    parseFloat(data.latitude),
+    parseFloat(data.longitude)
+  );
+
+  var marker = new google.maps.Marker({
+    map: map,
+    icon: icon,
+    position: position,
+    title: data.name,
+  });
+
+  google.maps.event.addListener(marker, "click", function (event) {
+    infowindow.setContent(content);
+    infowindow.open(map, marker);
+  });
+}
