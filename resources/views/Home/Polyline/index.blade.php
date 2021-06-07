@@ -29,21 +29,14 @@
             <div class="row">
                 <div class="col-lg">
                     <div class="card">
-                        <div class="card-header border-0">
+                        <div class="card-header border-0 pb-2">
                             <div class="d-flex justify-content-between">
                                 <h3 class="card-title">Peta Polyline</h3>
-                                <a href="#">Tampilkan Polyline</a>
+                                <button href="" id="addPoly" class="btn btn-sm btn-warning">Klik untuk tambah Polyline</button>
                             </div>
                         </div>
-                        <div class="card-body">
-
+                        <div class="card-body pt-1">
                             <div id="map" style="height: 500px;"></div>
-
-                            <div class="d-flex flex-row justify-content-end">
-                                <span class="mr-2">
-                                    <i class="fas fa-square text-primary"></i> Baru Ditambahkan
-                                </span>
-                            </div>
                         </div>
                     </div>
                     <!-- /.card -->
@@ -55,7 +48,7 @@
             <!-- /.row -->
 
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md">
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">Data Polyline</h3>
@@ -163,35 +156,6 @@
                     </div>
                     <!-- /.card -->
                 </div>
-                <!--/ col-md-6 -->
-                <div class="col-md-6">
-                    <div class="card card-primary">
-                        <div class="card-header">
-                            <h3 class="card-title">Tambah Data</h3>
-                        </div>
-                        <!-- /.card-header -->
-                        <!-- form start -->
-                        <form>
-                            <div class="card-body">
-                                <div class="form-group">
-                                    <label for="source">Titik Awal</label>
-                                    <input type="text" class="form-control" id="source" placeholder="Masukkan titik awal">
-                                </div>
-                                <div class="form-group">
-                                    <label for="destination">Titik Tujuan</label>
-                                    <input type="text" class="form-control" id="destination" placeholder="Masukkan titik tujuan">
-                                </div>
-                            </div>
-                            <!-- /.card-body -->
-
-                            <div class="card-footer">
-                                <button type="submit" class="btn btn-sm btn-primary">Submit</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <!--/ col-md-6 -->
-
             </div>
             <!--/ row -->
         </div>
