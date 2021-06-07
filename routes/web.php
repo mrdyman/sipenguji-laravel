@@ -21,5 +21,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'HomeController@index');
 Route::resource('home', 'HomeController');
 
+// getMarker
+Route::get('/getmarker', 'HomeController@getMarker');
+
 // polyline
 Route::resource('polyline', 'PolylineController');

@@ -102,4 +102,11 @@ class HomeController extends Controller
     {
         //
     }
+
+    public function getMarker()
+    {
+        $gedung = Http::get('http://localhost/sipenguji-api/api/gedung');
+        $response = $gedung->json();
+        return $response['data'];
+    }
 }

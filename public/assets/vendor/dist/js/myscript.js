@@ -1,4 +1,5 @@
 function initMap() {
+  // display map
   var mapOptions = {
     center: { lat: -0.836261, lng: 119.893715 },
     zoom: 17,
@@ -20,4 +21,21 @@ function initMap() {
       icon: icon,
     });
   });
+
+  // getMarker
+  getMarker();
 }
+
+function getMarker() {
+  var link = location.href;
+  $.ajax({
+    url: link + "getmarker",
+    method: "get",
+    dataType: "json",
+    success: function (data) {
+      console.log(data);
+    },
+  });
+}
+
+function displayMarker() {}
