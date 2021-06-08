@@ -54,7 +54,7 @@ class HomeController extends Controller
             return redirect('/')->with('status', 'Data berhasil ditambahkan!');
         } else {
             $errorCode = $client->status();
-            return redirect('/')->with('status', 'Terdapat kesalahan! Error Code:' . $errorCode);
+            return redirect('/')->with('error', 'Terdapat kesalahan! Error Code:' . $errorCode);
         }
     }
 
@@ -106,7 +106,7 @@ class HomeController extends Controller
             return redirect('/')->with('status', $message);
         } else {
             $errorCode = $client->status();
-            return redirect('/')->with('status', 'something wrong! with code: ' . $errorCode);
+            return redirect('/')->with('error', 'something wrong! with code: ' . $errorCode);
         }
     }
 

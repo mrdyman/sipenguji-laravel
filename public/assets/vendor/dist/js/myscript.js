@@ -4,9 +4,12 @@ $(document).ready(function () {
     $("#detailModalLabel").html("Edit Data Gedung");
 
     var id = $(this).attr("id");
+    var link = location.href + "home/" + id;
+
+    $(".modal-body form").attr("action", link);
 
     $.ajax({
-      url: location.href + "home/" + id,
+      url: link,
       method: "get",
       dataType: "json",
       success: function (data) {
@@ -28,12 +31,20 @@ $(function () {
     timer: 3000,
   });
 
-  const session = $(".session").data("flashmessage");
+  const session_success = $(".session-success").data("flashsuccess");
+  const session_error = $(".session-error").data("flasherror");
 
-  if (session) {
+  if (session_success) {
     Toast.fire({
       icon: "success",
-      title: session,
+      title: session_success,
+    });
+  }
+
+  if (session_error) {
+    Toast.fire({
+      icon: "error",
+      title: session_error,
     });
   }
 });

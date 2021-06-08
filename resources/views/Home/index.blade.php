@@ -6,7 +6,8 @@
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <div class="session" data-flashmessage="{{ session('status') }}"></div>
+    <div class="session-success" data-flashsuccess="{{ session('status') }}"></div>
+    <div class="session-error" data-flasherror="{{ session('error') }}"></div>
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
@@ -76,7 +77,7 @@
                                         <td>{{ $gedung['jumlah_ruangan'] }}</td>
                                         <td>
                                             <a href="#" class="badge badge-warning edit-gedung" id="{{ $gedung['id'] }}" data-toggle="modal">edit</a>
-                                            <a href="#" class="badge badge-danger">hapus</a>
+                                            <a href="#" class="badge badge-danger hapus-gedung">hapus</a>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -198,7 +199,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form method="post" action="{{url('home')}}/{{ $gedung['id'] }}">
+                        <form method="post" action="">
                             @method('put')
                             @csrf
                             <div class="form-group row mb-2">
