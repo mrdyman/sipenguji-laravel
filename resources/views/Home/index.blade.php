@@ -77,7 +77,7 @@
                                         <td>{{ $gedung['jumlah_ruangan'] }}</td>
                                         <td>
                                             <a href="#" class="badge badge-warning edit-gedung" id="{{ $gedung['id'] }}" data-toggle="modal">edit</a>
-                                            <a href="#" class="badge badge-danger hapus-gedung">hapus</a>
+                                            <a href="#" class="badge badge-danger hapus-gedung" id="{{ $gedung['id] }}">hapus</a>
                                         </td>
                                     </tr>
                                     @endforeach

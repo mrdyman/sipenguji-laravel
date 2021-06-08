@@ -1,3 +1,4 @@
+// edit data gedung
 $(document).ready(function () {
   $(".edit-gedung").on("click", function () {
     $("#detailModal").modal("show");
@@ -22,7 +23,14 @@ $(document).ready(function () {
     });
   });
 });
+// /--/
 
+// hapus data gedung
+$(".hapus-gedung").on("click", function () {
+  var id = $(this).attr("id");
+});
+
+// alert edit gedung
 $(function () {
   var Toast = Swal.mixin({
     toast: true,
@@ -48,3 +56,4 @@ $(function () {
     });
   }
 });
+// /---!
