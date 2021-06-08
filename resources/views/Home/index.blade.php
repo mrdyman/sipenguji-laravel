@@ -74,7 +74,7 @@
                                         <td>{{ $gedung['alamat'] }}</td>
                                         <td>{{ $gedung['jumlah_ruangan'] }}</td>
                                         <td>
-                                            <a href="#" class="badge badge-warning edit-gedung" id="{{ $gedung['id'] }}" data-toggle="modal" data-target="#detailModal">edit</a>
+                                            <a href="#" class="badge badge-warning edit-gedung" id="{{ $gedung['id'] }}" data-toggle="modal">edit</a>
                                             <a href="#" class="badge badge-danger">hapus</a>
                                         </td>
                                     </tr>
@@ -238,8 +238,8 @@
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Simpan</button>
+                        <button type="button" class="btn btn-sm btn-flat btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-sm btn-flat btn-success">Simpan</button>
                     </div>
                 </div>
             </div>

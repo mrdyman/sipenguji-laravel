@@ -66,7 +66,11 @@ class HomeController extends Controller
      */
     public function show($id)
     {
-        //
+        $client = Http::get('http://localhost/sipenguji-api/api/gedung', [
+            'id' => $id
+        ]);
+        $response = $client->json();
+        return $response['data'][0];
     }
 
     /**
