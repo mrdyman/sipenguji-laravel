@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="{{ url('assets/vendor') }}/dist/css/adminlte.min.css">
     <!-- Maps Script -->
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMiqfHPAc3Mn_JIjC5JOa0D85mGFpbUSs"></script>
-    <script src="{{ url('assets/vendor') }}/dist/js/myscript.js"></script>
+    <script src="{{ url('assets/vendor') }}/dist/js/mapsscript.js"></script>
 </head>
 <!--
 `body` tag options:
@@ -198,6 +198,9 @@
 
     <!-- AdminLTE for demo purposes -->
     <script src="{{ url('assets/vendor') }}/dist/js/demo.js"></script>
+
+    <!-- script to organize data CRUD -->
+    <script src="{{ url('assets/vendor') }}/dist/js/myscript.js"></script>
 
 </body>
 

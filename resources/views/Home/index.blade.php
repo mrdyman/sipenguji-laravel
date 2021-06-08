@@ -74,7 +74,8 @@
                                         <td>{{ $gedung['alamat'] }}</td>
                                         <td>{{ $gedung['jumlah_ruangan'] }}</td>
                                         <td>
-                                            <a href="" class="badge badge-warning">detail</a>
+                                            <a href="#" class="badge badge-warning edit-gedung" id="{{ $gedung['id'] }}" data-toggle="modal" data-target="#detailModal">edit</a>
+                                            <a href="#" class="badge badge-danger">hapus</a>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -89,7 +90,7 @@
                     <div class="card" style="height: 400px;">
                         <div class="card-header border-0">
                             <div class="d-flex justify-content-between">
-                                <h3 class="card-title">Tambah Data</h3>
+                                <h3 class="card-title">Tambah Data Gedung Ujian</h3>
                             </div>
                             @if(session('status'))
                             <div class="alert alert-success col-sm-3">
@@ -157,10 +158,10 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Rute</th>
-                                        <th>Jarak</th>
-                                        <th>Koordinat</th>
-                                        <th>Aksi</th>
+                                        <th>Nama</th>
+                                        <th>Alamat</th>
+                                        <th>Jumlah Peserta</th>
+                                        <th>detail</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -189,6 +190,61 @@
             <!-- /.row -->
         </div>
         <!-- /.container-fluid -->
+
+        <!-- Modal -->
+        <div class="modal fade" id="detailModal" tabindex="-1" aria-labelledby="detailModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="detailModalLabel">Detail</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="post" action="{{ url('home/edit') }}">
+                            @csrf
+                            <div class="form-group row mb-2">
+                                <label for="Nama_modal" class="col-sm-2 col-form-label col-form-label-sm">Nama</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control form-control-sm" id="Nama_modal" placeholder="Nama Gedung" name="nama">
+                                </div>
+                            </div>
+                            <div class="form-group row mb-2">
+                                <label for="alamat_modal" class="col-sm-2 col-form-label col-form-label-sm">Alamat</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control form-control-sm" id="alamat_modal" placeholder="Alamat Gedung" name="alamat">
+                                </div>
+                            </div>
+                            <div class="form-group row mb-2">
+                                <label for="jumlah-ruangan_modal" class="col-sm-2 col-form-label col-form-label-sm">Jumlah ruangan</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control form-control-sm" id="jumlah-ruangan_modal" placeholder="Jumlah Ruangan" name="jumlah_ruangan">
+                                </div>
+                            </div>
+                            <div class="form-group row mb-2">
+                                <label for="latitude_modal" class="col-sm-2 col-form-label col-form-label-sm">Latitude</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control form-control-sm" id="latitude_modal" placeholder="Latitude" name="latitude">
+                                </div>
+                            </div>
+                            <div class="form-group row mb-2">
+                                <label for="longitude_modal" class="col-sm-2 col-form-label col-form-label-sm">Longitude</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control form-control-sm" id="longitude_modal" placeholder="Longitude" name="longitude">
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Simpan</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
     <!-- /.content -->
 </div>
