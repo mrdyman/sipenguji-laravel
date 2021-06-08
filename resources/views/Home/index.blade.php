@@ -6,6 +6,7 @@
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
+    <div class="session" data-flashmessage="{{ session('status') }}"></div>
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
@@ -92,11 +93,6 @@
                             <div class="d-flex justify-content-between">
                                 <h3 class="card-title">Tambah Data Gedung Ujian</h3>
                             </div>
-                            @if(session('status'))
-                            <div class="alert alert-success col-sm-3">
-                                {{ session('status') }}
-                            </div>
-                            @endif
                         </div>
                         <div class="card-body">
                             <form method="post" action="{{ url('home') }}">
@@ -202,7 +198,8 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form method="post" action="{{ url('home/edit') }}">
+                        <form method="post" action="{{url('home')}}/{{ $gedung['id'] }}">
+                            @method('put')
                             @csrf
                             <div class="form-group row mb-2">
                                 <label for="Nama_modal" class="col-sm-2 col-form-label col-form-label-sm">Nama</label>
@@ -235,12 +232,13 @@
                                 </div>
                             </div>
 
-                        </form>
+                            <!-- </form> -->
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-sm btn-flat btn-secondary" data-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-sm btn-flat btn-success">Simpan</button>
                     </div>
+                    </form>
                 </div>
             </div>
         </div>

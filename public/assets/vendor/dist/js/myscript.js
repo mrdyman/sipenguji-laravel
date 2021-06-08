@@ -19,3 +19,21 @@ $(document).ready(function () {
     });
   });
 });
+
+$(function () {
+  var Toast = Swal.mixin({
+    toast: true,
+    position: "top-end",
+    showConfirmButton: false,
+    timer: 3000,
+  });
+
+  const session = $(".session").data("flashmessage");
+
+  if (session) {
+    Toast.fire({
+      icon: "success",
+      title: session,
+    });
+  }
+});

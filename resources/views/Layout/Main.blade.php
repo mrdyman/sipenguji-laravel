@@ -14,6 +14,10 @@
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ url('assets/vendor') }}/dist/css/adminlte.min.css">
+    <!-- SweetAlert2 -->
+    <link rel="stylesheet" href="{{ url('assets/vendor') }}/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+    <!-- Toastr -->
+    <link rel="stylesheet" href="{{ url('assets/vendor') }}/plugins/toastr/toastr.min.css">
     <!-- Maps Script -->
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMiqfHPAc3Mn_JIjC5JOa0D85mGFpbUSs"></script>
     <script src="{{ url('assets/vendor') }}/dist/js/mapsscript.js"></script>
@@ -195,7 +199,10 @@
     <script src="{{ url('assets/vendor') }}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE -->
     <script src="{{ url('assets/vendor') }}/dist/js/adminlte.js"></script>
-
+    <!-- SweetAlert2 -->
+    <script src="{{ url('assets/vendor') }}/plugins/sweetalert2/sweetalert2.min.js"></script>
+    <!-- Toastr -->
+    <script src="{{ url('assets/vendor') }}/plugins/toastr/toastr.min.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="{{ url('assets/vendor') }}/dist/js/demo.js"></script>
 

@@ -93,7 +93,21 @@ class HomeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $client = Http::put('http://localhost/sipenguji-api/api/gedung', [
+            'id' => $id,
+            'nama' => $request->nama,
+            'alamat' => $request->alamat,
+            'jumlah_ruangan' => $request->jumlah_ruangan,
+            'latitude' => $request->latitude,
+            'longitude' => $request->longitude
+        ]);
+        if ($client->successful()) {
+            $message = $client->json(['message']);
+            return redirect('/')->with('status', $message);
+        } else {
+            $errorCode = $client->status();
+            return redirect('/')->with('status', 'something wrong! with code: ' . $errorCode);
+        }
     }
 
     /**
