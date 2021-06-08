@@ -51,10 +51,10 @@ class HomeController extends Controller
             'longitude' => $request->longitude
         ]);
         if ($client->successful()) {
-            return redirect('home')->with('status', 'Data berhasil ditambahkan!');
+            return redirect('/')->with('status', 'Data berhasil ditambahkan!');
         } else {
             $errorCode = $client->status();
-            return redirect('home')->with('status', 'Terdapat kesalahan! Error Code:' . $errorCode);
+            return redirect('/')->with('status', 'Terdapat kesalahan! Error Code:' . $errorCode);
         }
     }
 
