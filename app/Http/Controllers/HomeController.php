@@ -118,7 +118,16 @@ class HomeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $client = Http::asForm()->delete('http://localhost/sipenguji-api/api/gedung', [
+            'id' => $id
+        ]);
+        if ($client->successful()) {
+            if ($client->json(['status'])) {
+                return redirect('/');
+            }
+        } else {
+            return $client->json();
+        }
     }
 
     public function getMarker()

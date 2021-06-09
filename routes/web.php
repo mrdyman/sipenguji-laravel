@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 // home
 Route::get('/', 'HomeController@index');
+Route::delete('/', 'HomeController@index');
 Route::resource('home', 'HomeController');
 
 // getMarker

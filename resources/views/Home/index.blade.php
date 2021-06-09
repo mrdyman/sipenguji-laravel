@@ -5,6 +5,7 @@
 @section('content')
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Content Header (Page header) -->
     <div class="session-success" data-flashsuccess="{{ session('status') }}"></div>
     <div class="session-error" data-flasherror="{{ session('error') }}"></div>
