@@ -26,8 +26,10 @@ $(document).ready(function () {
 // /--/
 
 // hapus data gedung
-$(".hapus-gedung").on("click", function () {
+$(".hapus-gedung").on("click", function (e) {
+  e.preventDefault();
   var id = $(this).attr("id");
+  console.log(id);
 });
 
 // alert edit gedung

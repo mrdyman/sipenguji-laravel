@@ -77,7 +77,7 @@
                                         <td>{{ $gedung['jumlah_ruangan'] }}</td>
                                         <td>
                                             <a href="#" class="badge badge-warning edit-gedung" id="{{ $gedung['id'] }}" data-toggle="modal">edit</a>
-                                            <a href="#" class="badge badge-danger hapus-gedung" id="{{ $gedung['id] }}">hapus</a>
+                                            <a href="#" class="badge badge-danger hapus-gedung" id="{{ $gedung['id'] }}">hapus</a>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -232,8 +232,6 @@
                                     <input type="text" class="form-control form-control-sm" id="longitude_modal" placeholder="Longitude" name="longitude">
                                 </div>
                             </div>
-
-                            <!-- </form> -->
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-sm btn-flat btn-secondary" data-dismiss="modal">Close</button>
