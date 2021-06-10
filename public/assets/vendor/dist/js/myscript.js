@@ -14,7 +14,7 @@ $(document).ready(function () {
       method: "get",
       dataType: "json",
       success: function (data) {
-        $("#Nama_modal").val(data.nama);
+        $("#Nama_modal").val(data.nama_gedung);
         $("#alamat_modal").val(data.alamat);
         $("#jumlah-ruangan_modal").val(data.jumlah_ruangan);
         $("#latitude_modal").val(data.latitude);
@@ -28,6 +28,16 @@ $(document).ready(function () {
   $(".detail-ruangan").on("click", function () {
     $("#detailModal").modal("show");
     $("#detailModalLabel").html("Detail Data Ruangan");
+    $(".alamat-label").html("Jumlah Peserta");
+    $(".jumlah-ruangan-label").html("Nomor Peserta");
+    $(".latitude-label").html("Jadwal");
+    $(".longitude-label").html("Lokasi");
+
+    $("#Nama_modal").prop("disabled", true);
+    $("#alamat_modal").prop("disabled", true);
+    $("#jumlah-ruangan_modal").prop("disabled", true);
+    $("#latitude_modal").prop("disabled", true);
+    $("#longitude_modal").prop("disabled", true);
 
     var id = $(this).attr("id");
     var link_ruangan = location.href + "ruangan/" + id;
@@ -39,7 +49,11 @@ $(document).ready(function () {
       method: "get",
       dataType: "json",
       success: function (data) {
-        console.log(data);
+        $("#Nama_modal").val(data.nama_ruangan);
+        $("#alamat_modal").val(data.jumlah_peserta);
+        $("#jumlah-ruangan_modal").val(data.nomor_peserta);
+        $("#latitude_modal").val(data.jadwal);
+        $("#longitude_modal").val(data.alamat);
       },
     });
   });

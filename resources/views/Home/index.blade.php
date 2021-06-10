@@ -72,7 +72,7 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>
-                                            {{ $gedung['nama'] }}
+                                            {{ $gedung['nama_gedung'] }}
                                         </td>
                                         <td>{{ $gedung['alamat'] }}</td>
                                         <td>{{ $gedung['jumlah_ruangan'] }}</td>
@@ -204,31 +204,31 @@
                             @method('put')
                             @csrf
                             <div class="form-group row mb-2">
-                                <label for="Nama_modal" class="col-sm-2 col-form-label col-form-label-sm">Nama</label>
+                                <label for="Nama_modal" class="col-sm-2 col-form-label col-form-label-sm nama-label">Nama</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control form-control-sm" id="Nama_modal" placeholder="Nama Gedung" name="nama">
                                 </div>
                             </div>
                             <div class="form-group row mb-2">
-                                <label for="alamat_modal" class="col-sm-2 col-form-label col-form-label-sm">Alamat</label>
+                                <label for="alamat_modal" class="col-sm-2 col-form-label col-form-label-sm alamat-label">Alamat</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control form-control-sm" id="alamat_modal" placeholder="Alamat Gedung" name="alamat">
                                 </div>
                             </div>
                             <div class="form-group row mb-2">
-                                <label for="jumlah-ruangan_modal" class="col-sm-2 col-form-label col-form-label-sm">Jumlah ruangan</label>
+                                <label for="jumlah-ruangan_modal" class="col-sm-2 col-form-label col-form-label-sm jumlah-ruangan-label">Jumlah ruangan</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control form-control-sm" id="jumlah-ruangan_modal" placeholder="Jumlah Ruangan" name="jumlah_ruangan">
                                 </div>
                             </div>
                             <div class="form-group row mb-2">
-                                <label for="latitude_modal" class="col-sm-2 col-form-label col-form-label-sm">Latitude</label>
+                                <label for="latitude_modal" class="col-sm-2 col-form-label col-form-label-sm latitude-label">Latitude</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control form-control-sm" id="latitude_modal" placeholder="Latitude" name="latitude">
                                 </div>
                             </div>
                             <div class="form-group row mb-2">
-                                <label for="longitude_modal" class="col-sm-2 col-form-label col-form-label-sm">Longitude</label>
+                                <label for="longitude_modal" class="col-sm-2 col-form-label col-form-label-sm longitude-label">Longitude</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control form-control-sm" id="longitude_modal" placeholder="Longitude" name="longitude">
                                 </div>

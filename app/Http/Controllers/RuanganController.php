@@ -52,7 +52,7 @@ class RuanganController extends Controller
         if ($client->successful()) {
             if ($client->json(['status'])) {
                 $response = $client->json();
-                return $response;
+                return $response['data'][0];
             }
         }
     }
