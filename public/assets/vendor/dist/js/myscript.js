@@ -4,6 +4,17 @@ $(document).ready(function () {
     $("#detailModal").modal("show");
     $("#detailModalLabel").html("Edit Data Gedung");
 
+    $(".alamat-label").html("Alamat");
+    $(".jumlah-ruangan-label").html("Jumlah Ruangan");
+    $(".latitude-label").html("Latitude");
+    $(".longitude-label").html("Longitude");
+
+    $("#Nama_modal").prop("disabled", false);
+    $("#alamat_modal").prop("disabled", false);
+    $("#jumlah-ruangan_modal").prop("disabled", false);
+    $("#latitude_modal").prop("disabled", false);
+    $("#longitude_modal").prop("disabled", false);
+
     var id = $(this).attr("id");
     var link = location.href + "home/" + id;
 
