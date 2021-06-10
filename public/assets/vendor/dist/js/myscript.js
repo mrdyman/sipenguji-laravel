@@ -49,7 +49,7 @@ $(document).ready(function () {
     $("#alamat_modal").prop("disabled", true);
     $("#jumlah-ruangan_modal").prop("disabled", true);
     $("#latitude_modal").prop("disabled", true);
-    $("#longitude_modal").prop("disabled", true);
+    // $("#longitude_modal").prop("disabled", true);
     $(".btn-simpan").prop("disabled", true);
 
     var id = $(this).attr("id");
@@ -67,6 +67,18 @@ $(document).ready(function () {
         $("#jumlah-ruangan_modal").val(data.nomor_peserta);
         $("#latitude_modal").val(data.jadwal);
         $("#longitude_modal").val(data.alamat);
+
+        $(".longitude-input").empty();
+
+        $(".longitude-input").append(`
+          <label class="col-sm-2 col-form-label col-form-label-sm">Lokasi</label>
+          <div class="col-sm-10">
+            <select class="custom-select" id="lokasi">
+              <option selected>Pilih lokasi...</option>
+              <option value="1">One</option>
+            </select>
+          </div>
+        `);
       },
     });
   });

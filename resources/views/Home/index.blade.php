@@ -227,7 +227,7 @@
                                     <input type="text" class="form-control form-control-sm" id="latitude_modal" placeholder="Latitude" name="latitude">
                                 </div>
                             </div>
-                            <div class="form-group row mb-2">
+                            <div class="form-group row mb-2 longitude-input">
                                 <label for="longitude_modal" class="col-sm-2 col-form-label col-form-label-sm longitude-label">Longitude</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control form-control-sm" id="longitude_modal" placeholder="Longitude" name="longitude">
