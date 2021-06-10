@@ -18,11 +18,11 @@ class HomeController extends Controller
         $response = $gedung->json();
         $dataGedung = $response['data'];
 
-        $polyline = Http::get('http://localhost/sipenguji-api/api/polyline');
-        $polylineResponse = $polyline->json();
-        $dataPolyline = $polylineResponse['data'];
+        $client = Http::get('http://localhost/sipenguji-api/api/ruangan');
+        $result = $client->json();
+        $dataRuangan = $result['data'];
 
-        return view('home.index', ['gedung' => $dataGedung, 'polyline' => $dataPolyline]);
+        return view('home.index', ['gedung' => $dataGedung, 'ruangan' => $dataRuangan]);
     }
 
     /**

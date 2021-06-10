@@ -163,15 +163,15 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($polyline as $polyline)
+                                    @foreach($ruangan as $ruangan)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>
-                                            {{ $polyline['jalur'] }}
+                                            {{ $ruangan['nama_ruangan'] }}
                                         </td>
-                                        <td>{{ $polyline['jarak'] }}</td>
+                                        <td>{{ $ruangan['nama_gedung'] }}</td>
                                         <td>
-                                            {{ $polyline['koordinat'] }}
+                                            {{ $ruangan['jumlah_peserta'] }}
                                         </td>
                                         <td>
                                             <a href="#" class="badge badge-success detail-ruangan" data-toggle="modal" id="{{ 1 }}">detail</a>
