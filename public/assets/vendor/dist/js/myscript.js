@@ -14,6 +14,7 @@ $(document).ready(function () {
     $("#jumlah-ruangan_modal").prop("disabled", false);
     $("#latitude_modal").prop("disabled", false);
     $("#longitude_modal").prop("disabled", false);
+    $(".btn-simpan").prop("disabled", false);
 
     var id = $(this).attr("id");
     var link = location.href + "home/" + id;
@@ -49,6 +50,7 @@ $(document).ready(function () {
     $("#jumlah-ruangan_modal").prop("disabled", true);
     $("#latitude_modal").prop("disabled", true);
     $("#longitude_modal").prop("disabled", true);
+    $(".btn-simpan").prop("disabled", true);
 
     var id = $(this).attr("id");
     var link_ruangan = location.href + "ruangan/" + id;
