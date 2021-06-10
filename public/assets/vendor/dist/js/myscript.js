@@ -1,5 +1,5 @@
-// edit data gedung
 $(document).ready(function () {
+  // edit data gedung
   $(".edit-gedung").on("click", function () {
     $("#detailModal").modal("show");
     $("#detailModalLabel").html("Edit Data Gedung");
@@ -22,8 +22,28 @@ $(document).ready(function () {
       },
     });
   });
+  // --/ edit data gedung
+
+  // detail ruangan
+  $(".detail-ruangan").on("click", function () {
+    $("#detailModal").modal("show");
+    $("#detailModalLabel").html("Detail Data Ruangan");
+
+    var id = $(this).attr("id");
+    var link_ruangan = location.href + "ruangan/" + id;
+
+    $(".modal-body form").attr("action", link_ruangan);
+
+    $.ajax({
+      url: link_ruangan,
+      method: "get",
+      dataType: "json",
+      success: function (data) {
+        console.log(data);
+      },
+    });
+  });
 });
-// /--/
 
 // hapus data gedung
 $(".hapus-gedung").on("click", function (e) {

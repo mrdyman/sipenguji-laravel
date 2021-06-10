@@ -27,3 +27,6 @@ Route::get('/getmarker', 'HomeController@getMarker');
 
 // polyline
 Route::resource('polyline', 'PolylineController');
+
+// ruangan
+Route::resource('ruangan', 'RuanganController');

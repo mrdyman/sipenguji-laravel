@@ -174,7 +174,7 @@
                                             {{ $polyline['koordinat'] }}
                                         </td>
                                         <td>
-                                            <a href="" class="badge badge-success">detail</a>
+                                            <a href="#" class="badge badge-success detail-ruangan" data-toggle="modal" id="{{ 1 }}">detail</a>
                                         </td>
                                     </tr>
                                     @endforeach
