@@ -46,7 +46,6 @@ class HomeController extends Controller
         $client = Http::post('http://localhost/sipenguji-api/api/gedung', [
             'nama' => $request->nama,
             'alamat' => $request->alamat,
-            'jumlah_ruangan' => $request->jumlah_ruangan,
             'latitude' => $request->latitude,
             'longitude' => $request->longitude
         ]);
