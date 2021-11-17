@@ -249,7 +249,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form method="post" action="">
+                        <form method="post" action="" enctype=multipart/form-data>
                             @method('put')
                             @csrf
                             <div class="form-group row mb-2">
@@ -264,24 +264,33 @@
                                     <input type="text" class="form-control form-control-sm" id="alamat_modal" placeholder="Alamat Gedung" name="alamat">
                                 </div>
                             </div>
-                            <div class="form-group row mb-2">
+                            <div class="form-group row mb-2 jumlah_ruangan">
                                 <label for="jumlah-ruangan_modal" class="col-sm-2 col-form-label col-form-label-sm jumlah-ruangan-label">Jumlah ruangan</label>
-                                <div class="col-sm-10">
+                                <div class="col-sm-10 jumlah-ruangan">
                                     <input type="text" class="form-control form-control-sm" id="jumlah-ruangan_modal" placeholder="Jumlah Ruangan" name="jumlah_ruangan">
                                 </div>
                             </div>
-                            <div class="form-group row mb-2">
+                            <div class="form-group row mb-2 latitude">
                                 <label for="latitude_modal" class="col-sm-2 col-form-label col-form-label-sm latitude-label">Latitude</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control form-control-sm" id="latitude_modal" placeholder="Latitude" name="latitude">
                                 </div>
                             </div>
-                            <div class="form-group row mb-2 longitude-input">
+
+                            <div class="form-group row mb-2 longitude-input longitude">
                                 <label for="longitude_modal" class="col-sm-2 col-form-label col-form-label-sm longitude-label">Longitude</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control form-control-sm" id="longitude_modal" placeholder="Longitude" name="longitude">
                                 </div>
                             </div>
+
+                            <div class="form-group row mb-2 gambar-input">
+                                <label for="gambar_modal" class="col-sm-2 col-form-label col-form-label-sm gambar-label">Gambar</label>
+                                <div class="col-sm-10">
+                                    <input type="file" class="form-control-file" name="gambar" id="gambar">
+                                </div>
+                            </div>
+
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-sm btn-flat btn-secondary" data-dismiss="modal">Close</button>

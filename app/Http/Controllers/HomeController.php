@@ -72,7 +72,7 @@ class HomeController extends Controller
             'id' => $id
         ]);
         $response = $client->json();
-        return $response['data'][0];
+        return $response['data'];
     }
 
     /**
@@ -95,14 +95,25 @@ class HomeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $client = Http::put('http://localhost/sipenguji-api/api/gedung', [
-            'id' => $id,
-            'nama' => $request->nama,
-            'alamat' => $request->alamat,
-            'jumlah_ruangan' => $request->jumlah_ruangan,
-            'latitude' => $request->latitude,
-            'longitude' => $request->longitude
-        ]);
+        $gambar = $request->file('gambar');
+        // check file is present and has no problem uploading it
+        if ($request->hasFile('gambar') && $request->file('gambar')->isValid()) {
+
+            $client = Http::attach('img', $gambar->get(), $gambar->getClientOriginalName())
+                ->post('http://localhost/sipenguji-api/api/gedung', [
+                    'id' => $id,
+                    'nama' => $request->nama,
+                    'alamat' => $request->alamat
+
+                ]);
+        } else {
+            $client = Http::put('http://localhost/sipenguji-api/api/gedung', [
+                'id' => $id,
+                'nama' => $request->nama,
+                'alamat' => $request->alamat
+            ]);
+        }
+
         if ($client->successful()) {
             $message = $client->json(['message']);
             return redirect('/')->with('status', $message);

@@ -5,7 +5,9 @@ $(document).ready(function () {
     $("#detailModalLabel").html("Edit Data Gedung");
 
     $(".alamat-label").html("Alamat");
-    $(".jumlah-ruangan-label").html("Jumlah Ruangan");
+    $(".jumlah_ruangan").empty();
+    $(".latitude").empty();
+    $(".longitude").empty();
     $(".latitude-label").html("Latitude");
     $(".longitude-label").html("Longitude");
 
