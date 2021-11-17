@@ -22,7 +22,10 @@ class HomeController extends Controller
         $result = $client->json();
         $dataRuangan = $result['data'];
 
-        return view('home.index', ['gedung' => $dataGedung, 'ruangan' => $dataRuangan]);
+        $jadwal = Http::get('http://localhost/sipenguji-api/api/jadwal');
+        $dataJadwal = $jadwal->json()['data'];
+
+        return view('home.index', ['gedung' => $dataGedung, 'ruangan' => $dataRuangan, 'jadwal' => $dataJadwal]);
     }
 
     /**

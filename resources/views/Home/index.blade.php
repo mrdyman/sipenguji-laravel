@@ -184,6 +184,55 @@
                     </div>
                 </div>
                 <!-- /.col-md-6 -->
+                <div class="col-lg">
+                    <div class="card">
+                        <div class="card-header border-0">
+                            <h3 class="card-title">Jadwal Ujian</h3>
+                            <div class="card-tools">
+                                <a href="#" class="btn btn-tool btn-sm">
+                                    <i class="fas fa-download"></i>
+                                </a>
+                                <a href="#" class="btn btn-tool btn-sm">
+                                    <i class="fas fa-bars"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="card-body table-responsive p-0">
+                            <table class="table table-striped table-valign-middle">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Nama Ruangan</th>
+                                        <th>Nama Gedung</th>
+                                        <th>Jadwal</th>
+                                        <th>Jumlah Peserta</th>
+                                        <th>Sesi</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($jadwal as $mJadwal)
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>
+                                            {{ $mJadwal['nama_ruangan'] }}
+                                        </td>
+                                        <td>{{ $mJadwal['nama_gedung'] }}</td>
+                                        <td>{{ $mJadwal['jadwal'] }}</td>
+                                        <td>{{ $mJadwal['jumlah_peserta'] }}</td>
+                                        <td>{{ $mJadwal['sesi'] }}</td>
+                                        <td>
+                                            <a href="#" class="badge badge-warning edit-gedung" id="{{ $gedung['id'] }}" data-toggle="modal">edit</a>
+                                            <a href="#" class="badge badge-danger hapus-gedung" id="{{ $gedung['id'] }}">hapus</a>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- /.card -->
+                </div>
             </div>
             <!-- /.row -->
         </div>
