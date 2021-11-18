@@ -46,12 +46,16 @@ class HomeController extends Controller
      */
     public function store(Request $request)
     {
-        $client = Http::post('http://localhost/sipenguji-api/api/gedung', [
-            'nama' => $request->nama,
-            'alamat' => $request->alamat,
-            'latitude' => $request->latitude,
-            'longitude' => $request->longitude
-        ]);
+        $gambar = $request->file('gambar');
+
+        $client = Http::attach('img', $gambar->get(), $gambar->getClientOriginalName())
+            ->post('http://localhost/sipenguji-api/api/gedung', [
+                'nama' => $request->nama,
+                'alamat' => $request->alamat,
+                'latitude' => 'this field will deleted soon',
+                'longitude' => 'this field will deleted soon'
+            ]);
+
         if ($client->successful()) {
             return redirect('/')->with('status', 'Data berhasil ditambahkan!');
         } else {
@@ -145,7 +149,7 @@ class HomeController extends Controller
 
     public function getMarker()
     {
-        $gedung = Http::get('http://localhost/sipenguji-api/api/gedung');
+        $gedung = Http::get('http://localhost/sipenguji-api/api/ruangan');
         $response = $gedung->json();
         return $response['data'];
     }

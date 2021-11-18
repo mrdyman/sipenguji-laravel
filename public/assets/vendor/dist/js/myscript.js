@@ -1,22 +1,30 @@
 $(document).ready(function () {
+  // tambah data gedung
+  $(".tambah-gedung").on("click", function () {
+    $("#detailModal").modal("show");
+    $("#detailModalLabel").html("Tambah Data Gedung");
+
+    //hide form edit
+    $(".edit-modal").hide();
+    $(".modal-tambah").show();
+  });
+  // --/ tambah data gedung
+
   // edit data gedung
   $(".edit-gedung").on("click", function () {
     $("#detailModal").modal("show");
     $("#detailModalLabel").html("Edit Data Gedung");
 
     $(".alamat-label").html("Alamat");
-    $(".jumlah_ruangan").empty();
-    $(".latitude").empty();
-    $(".longitude").empty();
-    $(".latitude-label").html("Latitude");
-    $(".longitude-label").html("Longitude");
 
     $("#Nama_modal").prop("disabled", false);
     $("#alamat_modal").prop("disabled", false);
-    $("#jumlah-ruangan_modal").prop("disabled", false);
-    $("#latitude_modal").prop("disabled", false);
-    $("#longitude_modal").prop("disabled", false);
     $(".btn-simpan").prop("disabled", false);
+
+    //hide form tambah
+    $(".modal-tambah").hide();
+
+    $(".edit-modal").show();
 
     var id = $(this).attr("id");
     var link = location.href + "home/" + id;
@@ -30,9 +38,6 @@ $(document).ready(function () {
       success: function (data) {
         $("#Nama_modal").val(data.nama_gedung);
         $("#alamat_modal").val(data.alamat);
-        $("#jumlah-ruangan_modal").val(data.jumlah_ruangan);
-        $("#latitude_modal").val(data.latitude);
-        $("#longitude_modal").val(data.longitude);
       },
     });
   });
@@ -49,9 +54,6 @@ $(document).ready(function () {
 
     $("#Nama_modal").prop("disabled", true);
     $("#alamat_modal").prop("disabled", true);
-    $("#jumlah-ruangan_modal").prop("disabled", true);
-    $("#latitude_modal").prop("disabled", true);
-    // $("#longitude_modal").prop("disabled", true);
     $(".btn-simpan").prop("disabled", true);
 
     var id = $(this).attr("id");
@@ -92,13 +94,13 @@ $(".hapus-gedung").on("click", function (e) {
   var id = $(this).attr("id");
 
   Swal.fire({
-    title: "Are you sure?",
-    text: "You won't be able to revert this!",
+    title: "Anda yakin?",
+    text: "Data tidak dapat dikembalikan!",
     icon: "warning",
     showCancelButton: true,
     confirmButtonColor: "#3085d6",
     cancelButtonColor: "#d33",
-    confirmButtonText: "Yes, delete it!",
+    confirmButtonText: "Ya, hapus data!",
   }).then((result) => {
     if (result.isConfirmed) {
       $.ajaxSetup({
@@ -110,7 +112,7 @@ $(".hapus-gedung").on("click", function (e) {
         url: location.href + "home/" + id,
         type: "delete",
         success: function () {
-          Swal.fire("Deleted!", "Your file has been deleted.", "success");
+          Swal.fire("Terhapus!", "data gedung berhasil dihapus.", "success");
           location.href = "/";
         },
       });
