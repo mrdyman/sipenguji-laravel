@@ -149,7 +149,14 @@ class HomeController extends Controller
 
     public function getMarker()
     {
-        $gedung = Http::get('http://localhost/sipenguji-api/api/ruangan');
+        $ruangan = Http::get('http://localhost/sipenguji-api/api/ruangan');
+        $response = $ruangan->json();
+        return $response['data'];
+    }
+
+    public function getGedung()
+    {
+        $gedung = Http::get('http://localhost/sipenguji-api/api/gedung');
         $response = $gedung->json();
         return $response['data'];
     }

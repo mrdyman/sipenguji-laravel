@@ -140,11 +140,8 @@
                         <div class="card-header border-0">
                             <h3 class="card-title">Data Ruangan Ujian</h3>
                             <div class="card-tools">
-                                <a href="#" class="btn btn-tool btn-sm">
-                                    <i class="fas fa-download"></i>
-                                </a>
-                                <a href="#" class="btn btn-tool btn-sm">
-                                    <i class="fas fa-bars"></i>
+                                <a href="#" class="btn btn-tool btn-sm tambah-ruangan" data-toggle="modal">
+                                    <i class="fas fa-plus-square"></i>
                                 </a>
                             </div>
                         </div>
@@ -154,9 +151,10 @@
                                     <tr>
                                         <th>#</th>
                                         <th>Nama</th>
-                                        <th>Alamat</th>
+                                        <th>Jenis Ujian</th>
                                         <th>Jumlah Peserta</th>
-                                        <th>detail</th>
+                                        <th>Alamat</th>
+                                        <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -166,9 +164,12 @@
                                         <td>
                                             {{ $ruangan['nama_ruangan'] }}
                                         </td>
-                                        <td>{{ $ruangan['nama_gedung'] }}</td>
+                                        <td>{{ $ruangan['jenis_ujian'] }}</td>
                                         <td>
                                             {{ $ruangan['jumlah_peserta'] }}
+                                        </td>
+                                        <td>
+                                            {{ $ruangan['nama_gedung'] }}
                                         </td>
                                         <td>
                                             <a href="#" class="badge badge-success detail-ruangan" data-toggle="modal" id="{{ 1 }}">detail</a>
@@ -245,7 +246,7 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body edit-modal">
+                    <div class="modal-body edit-modal-gedung">
                         <form method="post" action="" enctype=multipart/form-data>
                             @method('put')
                             @csrf
@@ -271,40 +272,89 @@
 
                             <div class="modal-footer">
                                     <button type="button" class="btn btn-sm btn-flat btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-sm btn-flat btn-success btn-update">Update</button>
+                                    <button type="submit" class="btn btn-sm btn-flat btn-success btn-update-gedung">Update</button>
                                 </div>
-
                         </form>
                     </div>
 
-                        <div class="modal-body modal-tambah">
-                            <form method="post" action="{{ url ('home') }}" enctype=multipart/form-data>
-                                @csrf
-                                <div class="form-group row mb-2">
-                                    <label for="Nama" class="col-sm-2 col-form-label col-form-label-sm">Nama</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control form-control-sm" id="Nama" placeholder="Nama Gedung" name="nama">
-                                    </div>
+                    <div class="modal-body modal-tambah-gedung">
+                        <form method="post" action="{{ url ('home') }}" enctype=multipart/form-data>
+                            @csrf
+                            <div class="form-group row mb-2">
+                                <label for="Nama" class="col-sm-2 col-form-label col-form-label-sm">Nama</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control form-control-sm" id="Nama" placeholder="Nama Gedung" name="nama">
                                 </div>
-                                <div class="form-group row mb-2">
-                                    <label for="alamat" class="col-sm-2 col-form-label col-form-label-sm">Alamat</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control form-control-sm" id="alamat" placeholder="Alamat Gedung" name="alamat">
-                                    </div>
+                            </div>
+                            <div class="form-group row mb-2">
+                                <label for="alamat" class="col-sm-2 col-form-label col-form-label-sm">Alamat</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control form-control-sm" id="alamat" placeholder="Alamat Gedung" name="alamat">
                                 </div>
-                                <div class="form-group row mb-2 gambar-input">
-                                    <label for="gambar_modal" class="col-sm-2 col-form-label col-form-label-sm gambar-label">Gambar</label>
-                                    <div class="col-sm-10">
-                                        <input type="file" class="form-control-file" name="gambar" id="gambar">
-                                    </div>
+                            </div>
+                            <div class="form-group row mb-2 gambar-input">
+                                <label for="gambar_modal" class="col-sm-2 col-form-label col-form-label-sm gambar-label">Gambar</label>
+                                <div class="col-sm-10">
+                                    <input type="file" class="form-control-file" name="gambar" id="gambar">
                                 </div>
+                            </div>
 
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-sm btn-flat btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-sm btn-flat btn-success btn-simpan">Simpan</button>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-sm btn-flat btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-sm btn-flat btn-success btn-simpan-gedung">Simpan</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="modal-body modal-tambah-ruangan">
+                        <form method="post" action="{{ url('ruangan') }}">
+                            @csrf
+                            <div class="form-group row mb-2">
+                                <label for="Nama" class="col-sm-2 col-form-label col-form-label-sm">Nama</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control form-control-sm" id="nama_ruangan" placeholder="Nama Ruangan" name="nama_ruangan">
                                 </div>
-                            </form>
-                        </div>
+                            </div>
+                            <div class="form-group row mb-2">
+                                <label for="alamat" class="col-sm-2 col-form-label col-form-label-sm">Jenis Ujian</label>
+                                <div class="col-sm-10">
+                                    <select class="form-control form-control-sm">
+                                        <option>SAINTEK</option>
+                                        <option>SOSHUM</option>
+                                        <option>CAMPURAN</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row mb-2">
+                                <label for="alamat" class="col-sm-2 col-form-label col-form-label-sm">Alamat</label>
+                                <div class="col-sm-10">
+                                    <select name="id_gedung" class="form-control form-control-sm select-ruangan">
+                                       
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row mb-2">
+                                <label for="Nama" class="col-sm-2 col-form-label col-form-label-sm">Latitude</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control form-control-sm" id="latitude-ruangan" placeholder="Latitude" name="latitude">
+                                </div>
+                            </div>
+                            <div class="form-group row mb-2">
+                                <label for="Nama" class="col-sm-2 col-form-label col-form-label-sm">Longitude</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control form-control-sm" id="longitude-ruangan" placeholder="Longitude" name="longitude">
+                                </div>
+                            </div>
+
+                             <div id="map_ruangan" style="height: 300px;"></div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-sm btn-flat btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-sm btn-flat btn-success btn-simpan-ruangan">Simpan</button>
+                            </div>
+                        </form>
+                    </div>
+
                 </div>
             </div>
         </div>

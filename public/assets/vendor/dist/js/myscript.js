@@ -5,8 +5,8 @@ $(document).ready(function () {
     $("#detailModalLabel").html("Tambah Data Gedung");
 
     //hide form edit
-    $(".edit-modal").hide();
-    $(".modal-tambah").show();
+    $(".edit-modal-gedung").hide();
+    $(".modal-tambah-gedung").show();
   });
   // --/ tambah data gedung
 
@@ -19,12 +19,12 @@ $(document).ready(function () {
 
     $("#Nama_modal").prop("disabled", false);
     $("#alamat_modal").prop("disabled", false);
-    $(".btn-simpan").prop("disabled", false);
+    $(".btn-simpan-gedung").prop("disabled", false);
 
     //hide form tambah
-    $(".modal-tambah").hide();
+    $(".modal-tambah-gedung").hide();
 
-    $(".edit-modal").show();
+    $(".edit-modal-gedung").show();
 
     var id = $(this).attr("id");
     var link = location.href + "home/" + id;
@@ -43,6 +43,68 @@ $(document).ready(function () {
   });
   // --/ edit data gedung
 
+  // tambah data ruangan
+  $(".tambah-ruangan").on("click", function () {
+    $("#detailModal").modal("show");
+    $("#detailModalLabel").html("Tambah Data Ruangan");
+
+    $(".edit-modal-gedung").hide();
+    $(".modal-tambah-gedung").hide();
+
+    $(".modal-tambah-ruangan").show();
+
+    //get data gedung yang akan dijadikan alamat ruangan
+    var link_gedung = location.href + "getgedung";
+    $.ajax({
+      url: link_gedung,
+      method: "get",
+      dataType: "json",
+      success: function (data) {
+        $(".select-ruangan").empty();
+        for (var i = 0; i < data.length; i++) {
+          $(".select-ruangan").append(
+            `<option value="` +
+              data[i].id +
+              `">` +
+              data[i].nama_gedung +
+              `</option>`
+          );
+        }
+      },
+    });
+
+    // display map
+    var mapOptions = {
+      center: { lat: -0.836261, lng: 119.893715 },
+      zoom: 17,
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+    };
+
+    map = new google.maps.Map(
+      document.getElementById("map_ruangan"),
+      mapOptions
+    );
+
+    var marker;
+    google.maps.event.addListener(map, "click", function (event) {
+      let latitude = event.latLng.lat();
+      let longitude = event.latLng.lng();
+      $("#latitude-ruangan").val(latitude);
+      $("#longitude-ruangan").val(longitude);
+
+      if (marker) {
+        marker.setMap(null);
+      }
+
+      marker = new google.maps.Marker({
+        position: event.latLng,
+        map: map,
+        icon: icon,
+      });
+    });
+  });
+  // --/ tambah data ruangan
+
   // detail ruangan
   $(".detail-ruangan").on("click", function () {
     $("#detailModal").modal("show");
@@ -54,7 +116,7 @@ $(document).ready(function () {
 
     $("#Nama_modal").prop("disabled", true);
     $("#alamat_modal").prop("disabled", true);
-    $(".btn-simpan").prop("disabled", true);
+    $(".btn-simpan-gedung").prop("disabled", true);
 
     var id = $(this).attr("id");
     var link_ruangan = location.href + "ruangan/" + id;

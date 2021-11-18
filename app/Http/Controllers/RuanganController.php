@@ -35,7 +35,20 @@ class RuanganController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $client = Http::post('http://localhost/sipenguji-api/api/ruangan', [
+            'nama_ruangan' => $request->nama_ruangan,
+            'jumlah_peserta' => 'will change to auto fill by count mahasiswa',
+            'latitude' => $request->latitude,
+            'longitude' => $request->longitude,
+            'id_gedung' => $request->id_gedung,
+        ]);
+
+        if ($client->successful()) {
+            return redirect('/')->with('status', 'Data Ruangan berhasil ditambahkan!');
+        } else {
+            $errorCode = $client->status();
+            return redirect('/')->with('error', 'Terdapat kesalahan! Error Code:' . $errorCode);
+        }
     }
 
     /**

@@ -25,6 +25,9 @@ Route::resource('home', 'HomeController');
 // getMarker
 Route::get('/getmarker', 'HomeController@getMarker');
 
+//getGedung
+Route::get('/getgedung', 'HomeController@getGedung');
+
 // polyline
 Route::resource('polyline', 'PolylineController');
 

@@ -45,7 +45,7 @@ function displayMarker(data) {
   var infowindow = new google.maps.InfoWindow();
   var content =
     '<div class="infoWindow"><strong>' +
-    data.nama +
+    data.nama_ruangan +
     "</strong>" +
     "<br/>" +
     data.latitude +
