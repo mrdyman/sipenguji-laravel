@@ -90,7 +90,23 @@ class RuanganController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $client = Http::put('http://localhost/sipenguji-api/api/ruangan', [
+            'id' => $id,
+            'nama_ruangan' => $request->nama_ruangan,
+            'jenis_ujian' => $request->jenis_ujian, //'this field will be moved to jadwal table'
+            'jumlah_peserta' => 'this field will be auto fill by count mahasiswa',
+            'latitude' => $request->latitude,
+            'longitude' => $request->longitude,
+            'id_gedung' => $request->id_gedung
+        ]);
+
+        if ($client->successful()) {
+            $message = $client->json(['message']);
+            return redirect('/')->with('status', $message);
+        } else {
+            $errorCode = $client->status();
+            return redirect('/')->with('error', 'something wrong! with code: ' . $errorCode);
+        }
     }
 
     /**
@@ -101,6 +117,15 @@ class RuanganController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $client = Http::asForm()->delete('http://localhost/sipenguji-api/api/ruangan', [
+            'id' => $id
+        ]);
+        if ($client->successful()) {
+            if ($client->json(['status'])) {
+                return redirect('/');
+            }
+        } else {
+            return $client->json();
+        }
     }
 }

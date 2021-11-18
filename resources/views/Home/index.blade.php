@@ -172,7 +172,8 @@
                                             {{ $ruangan['nama_gedung'] }}
                                         </td>
                                         <td>
-                                            <a href="#" class="badge badge-success detail-ruangan" data-toggle="modal" id="{{ 1 }}">detail</a>
+                                            <a href="#" class="badge badge-warning edit-ruangan" id="{{ $ruangan['id'] }}" data-toggle="modal">edit</a>
+                                            <a href="#" class="badge badge-danger hapus-ruangan" id="{{ $ruangan['id'] }}">hapus</a>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -351,6 +352,56 @@
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-sm btn-flat btn-secondary" data-dismiss="modal">Close</button>
                                 <button type="submit" class="btn btn-sm btn-flat btn-success btn-simpan-ruangan">Simpan</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="modal-body modal-edit-ruangan">
+                        <form method="post" action="{{ url('ruangan') }}">
+                            @method('put')
+                            @csrf
+                            <div class="form-group row mb-2">
+                                <label for="Nama" class="col-sm-2 col-form-label col-form-label-sm">Nama</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control form-control-sm" id="nama_ruangan_edit" placeholder="Nama Ruangan" name="nama_ruangan">
+                                </div>
+                            </div>
+                            <div class="form-group row mb-2">
+                                <label for="alamat" class="col-sm-2 col-form-label col-form-label-sm">Jenis Ujian</label>
+                                <div class="col-sm-10">
+                                    <select class="form-control form-control-sm" name="jenis_ujian">
+                                        <option>SAINTEK</option>
+                                        <option>SOSHUM</option>
+                                        <option>CAMPURAN</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row mb-2">
+                                <label for="alamat" class="col-sm-2 col-form-label col-form-label-sm">Alamat</label>
+                                <div class="col-sm-10">
+                                    <select name="id_gedung" class="form-control form-control-sm select-ruangan-edit">
+                                       
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row mb-2">
+                                <label for="Nama" class="col-sm-2 col-form-label col-form-label-sm">Latitude</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control form-control-sm" id="latitude-ruangan-edit" placeholder="Latitude" name="latitude">
+                                </div>
+                            </div>
+                            <div class="form-group row mb-2">
+                                <label for="Nama" class="col-sm-2 col-form-label col-form-label-sm">Longitude</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control form-control-sm" id="longitude-ruangan-edit" placeholder="Longitude" name="longitude">
+                                </div>
+                            </div>
+
+                             <div id="map_ruangan_edit" style="height: 300px;"></div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-sm btn-flat btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-sm btn-flat btn-success btn-update-ruangan">Update</button>
                             </div>
                         </form>
                     </div>

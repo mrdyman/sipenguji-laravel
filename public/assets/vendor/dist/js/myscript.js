@@ -6,6 +6,8 @@ $(document).ready(function () {
 
     //hide form edit
     $(".edit-modal-gedung").hide();
+    $(".modal-tambah-ruangan").hide();
+    $(".modal-edit-ruangan").hide();
     $(".modal-tambah-gedung").show();
   });
   // --/ tambah data gedung
@@ -23,6 +25,8 @@ $(document).ready(function () {
 
     //hide form tambah
     $(".modal-tambah-gedung").hide();
+    $(".modal-tambah-ruangan").hide();
+    $(".modal-edit-ruangan").hide();
 
     $(".edit-modal-gedung").show();
 
@@ -50,6 +54,7 @@ $(document).ready(function () {
 
     $(".edit-modal-gedung").hide();
     $(".modal-tambah-gedung").hide();
+    $(".modal-edit-ruangan").hide();
 
     $(".modal-tambah-ruangan").show();
 
@@ -104,6 +109,85 @@ $(document).ready(function () {
     });
   });
   // --/ tambah data ruangan
+
+  // edit data ruangan
+  $(".edit-ruangan").on("click", function () {
+    $("#detailModal").modal("show");
+    $("#detailModalLabel").html("Edit Data Ruangan");
+
+    $(".modal-tambah-gedung").hide();
+    $(".edit-modal-gedung").hide();
+    $(".modal-tambah-ruangan").hide();
+    $(".modal-edit-ruangan").show();
+
+    var id = $(this).attr("id");
+    var link = location.href + "ruangan/" + id;
+
+    $(".modal-body form").attr("action", link);
+
+    $.ajax({
+      url: link,
+      method: "get",
+      dataType: "json",
+      success: function (data) {
+        $("#nama_ruangan_edit").val(data.nama_ruangan);
+        $(".select-ruangan-edit").val(data.nama_gedung);
+        $("#latitude-ruangan-edit").val(data.latitude);
+        $("#longitude-ruangan-edit").val(data.longitude);
+      },
+    });
+
+    //get data gedung yang akan dijadikan alamat ruangan
+    var link_gedung = location.href + "getgedung";
+    $.ajax({
+      url: link_gedung,
+      method: "get",
+      dataType: "json",
+      success: function (data) {
+        $(".select-ruangan-edit").empty();
+        for (var i = 0; i < data.length; i++) {
+          $(".select-ruangan-edit").append(
+            `<option value="` +
+              data[i].id +
+              `">` +
+              data[i].nama_gedung +
+              `</option>`
+          );
+        }
+      },
+    });
+
+    // display map
+    var mapOptions = {
+      center: { lat: -0.836261, lng: 119.893715 },
+      zoom: 17,
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+    };
+
+    map = new google.maps.Map(
+      document.getElementById("map_ruangan_edit"),
+      mapOptions
+    );
+
+    var marker;
+    google.maps.event.addListener(map, "click", function (event) {
+      let latitude = event.latLng.lat();
+      let longitude = event.latLng.lng();
+      $("#latitude-ruangan-edit").val(latitude);
+      $("#longitude-ruangan-edit").val(longitude);
+
+      if (marker) {
+        marker.setMap(null);
+      }
+
+      marker = new google.maps.Marker({
+        position: event.latLng,
+        map: map,
+        icon: icon,
+      });
+    });
+  });
+  // --/ edit data ruangan
 
   // detail ruangan
   $(".detail-ruangan").on("click", function () {
@@ -175,6 +259,38 @@ $(".hapus-gedung").on("click", function (e) {
         type: "delete",
         success: function () {
           Swal.fire("Terhapus!", "data gedung berhasil dihapus.", "success");
+          location.href = "/";
+        },
+      });
+    }
+  });
+});
+
+// hapus data ruangan
+$(".hapus-ruangan").on("click", function (e) {
+  e.preventDefault();
+  var id = $(this).attr("id");
+
+  Swal.fire({
+    title: "Anda yakin?",
+    text: "Data tidak dapat dikembalikan!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Ya, hapus data!",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      $.ajaxSetup({
+        headers: {
+          "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+        },
+      });
+      $.ajax({
+        url: location.href + "ruangan/" + id,
+        type: "delete",
+        success: function () {
+          Swal.fire("Terhapus!", "data ruangan berhasil dihapus.", "success");
           location.href = "/";
         },
       });
