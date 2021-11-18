@@ -128,4 +128,11 @@ class RuanganController extends Controller
             return $client->json();
         }
     }
+
+    public function getRuangan()
+    {
+        $gedung = Http::get('http://localhost/sipenguji-api/api/ruangan');
+        $response = $gedung->json();
+        return $response['data'];
+    }
 }

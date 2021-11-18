@@ -25,7 +25,10 @@ class HomeController extends Controller
         $jadwal = Http::get('http://localhost/sipenguji-api/api/jadwal');
         $dataJadwal = $jadwal->json()['data'];
 
-        return view('home.index', ['gedung' => $dataGedung, 'ruangan' => $dataRuangan, 'jadwal' => $dataJadwal]);
+        $polyline = Http::get('http://localhost/sipenguji-api/api/polyline');
+        $dataPolyline = $polyline->json()['data'];
+
+        return view('home.index', ['gedung' => $dataGedung, 'ruangan' => $dataRuangan, 'jadwal' => $dataJadwal, 'polyline' => $dataPolyline]);
     }
 
     /**

@@ -87,51 +87,55 @@
                 </div>
                 <!-- /.col-md-6 -->
                 <div class="col-lg-6">
-                    <div class="card" style="height: 400px;">
+                    <div class="card">
                         <div class="card-header border-0">
-                            <div class="d-flex justify-content-between">
-                                <h3 class="card-title">Tambah Data Gedung Ujian</h3>
+                            <h3 class="card-title">Data Polyline</h3>
+                            <div class="card-tools">
+                                <a href="#" class="btn btn-tool btn-sm tambah-polyline" data-toggle="modal">
+                                    <i class="fas fa-plus-square"></i>
+                                </a>
                             </div>
                         </div>
-                        <div class="card-body">
-                            <form method="post" action="{{ url('home') }}">
-                                @csrf
-                                <div class="form-group row mb-2">
-                                    <label for="Nama" class="col-sm-2 col-form-label col-form-label-sm">Nama</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control form-control-sm" id="Nama" placeholder="Nama Gedung" name="nama">
-                                    </div>
-                                </div>
-                                <div class="form-group row mb-2">
-                                    <label for="alamat" class="col-sm-2 col-form-label col-form-label-sm">Alamat</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control form-control-sm" id="alamat" placeholder="Alamat Gedung" name="alamat">
-                                    </div>
-                                </div>
-                                <div class="form-group row mb-2">
-                                    <label for="jumlah-ruangan" class="col-sm-2 col-form-label col-form-label-sm">Jumlah ruangan</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control form-control-sm" id="jumlah-ruangan" placeholder="Jumlah Ruangan" name="jumlah_ruangan">
-                                    </div>
-                                </div>
-                                <div class="form-group row mb-2">
-                                    <label for="latitude" class="col-sm-2 col-form-label col-form-label-sm">Latitude</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control form-control-sm" id="latitude" placeholder="Latitude" name="latitude">
-                                    </div>
-                                </div>
-                                <div class="form-group row mb-2">
-                                    <label for="longitude" class="col-sm-2 col-form-label col-form-label-sm">Longitude</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control form-control-sm" id="longitude" placeholder="Longitude" name="longitude">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-sm-2 col-form-label col-form-label-sm"></div>
-                                    <button class="ml-2 btn btn-sm btn-info rounded-0" type="submit">Tambah</button>
-                                </div>
-
-                            </form>
+                        <div class="card-body table-responsive p-0">
+                            <table class="table table-striped table-valign-middle">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Titik Awal</th>
+                                        <th>Titik Tujuan</th>
+                                        <th>Jalur</th>
+                                        <th>Koordinat</th>
+                                        <th>Jarak</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($polyline as $p)
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>
+                                            {{ $p['titik_awal'] }}
+                                        </td>
+                                        <td>{{ $p['titik_tujuan'] }}</td>
+                                        <td>
+                                            {{ $p['jalur'] }}
+                                        </td>
+                                        <?php if (strlen($p['koordinat']) > 20) { ?>
+                                            <td>{{ substr($p['koordinat'], 0, 19) }}</td>
+                                            <?php } else { ?>
+                                            <td>{{ $p['koordinat'] }}</td>
+                                            <?php } ?>
+                                        <td>
+                                            {{ $p['jarak'] }}
+                                        </td>
+                                        <td>
+                                            <a href="#" class="badge badge-warning edit-ruangan" id="{{ $p['id'] }}" data-toggle="modal">edit</a>
+                                            <a href="#" class="badge badge-danger hapus-ruangan" id="{{ $p['id'] }}">hapus</a>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                     <!-- /.card -->
@@ -189,10 +193,7 @@
                             <h3 class="card-title">Jadwal Ujian</h3>
                             <div class="card-tools">
                                 <a href="#" class="btn btn-tool btn-sm">
-                                    <i class="fas fa-download"></i>
-                                </a>
-                                <a href="#" class="btn btn-tool btn-sm">
-                                    <i class="fas fa-bars"></i>
+                                    <i class="fas fa-plus-square tambah-jadwal" data-toggle="modal"></i>
                                 </a>
                             </div>
                         </div>
@@ -402,6 +403,40 @@
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-sm btn-flat btn-secondary" data-dismiss="modal">Close</button>
                                 <button type="submit" class="btn btn-sm btn-flat btn-success btn-update-ruangan">Update</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="modal-body modal-tambah-polyline">
+                        <form method="post" action="{{ url('polyline') }}">
+                            @csrf
+                            <div class="form-group row mb-2">
+                                <label for="titik_awal" class="col-sm-2 col-form-label col-form-label-sm">Titik Awal</label>
+                                <div class="col-sm-10">
+                                    <select class="form-control form-control-sm titik_awal">
+                                       
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row mb-2">
+                                <label for="titik_tujuan" class="col-sm-2 col-form-label col-form-label-sm">Titik Tujuan</label>
+                                <div class="col-sm-10">
+                                    <select class="form-control form-control-sm titik_tujuan">
+                                        
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row mb-2">
+
+                                <label for="polyline_koordinat">Koordinat</label>
+                                <textarea class="form-control" id="polyline_koordinat"></textarea>
+                            </div>
+
+                             <div id="map_polyline" style="height: 300px;"></div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-sm btn-flat btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-sm btn-flat btn-success btn-simpan-ruangan">Simpan</button>
                             </div>
                         </form>
                     </div>

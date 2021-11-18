@@ -298,6 +298,78 @@ $(".hapus-ruangan").on("click", function (e) {
   });
 });
 
+// tambah data polyline
+$(".tambah-polyline").on("click", function () {
+  $("#detailModal").modal("show");
+  $("#detailModalLabel").html("Tambah Data Polyline");
+
+  $(".edit-modal-gedung").hide();
+  $(".modal-tambah-gedung").hide();
+  $(".modal-edit-ruangan").hide();
+  $(".modal-tambah-ruangan").hide();
+
+  $(".modal-tambah-polyline").show();
+
+  //get data ruangan yang akan dijadikan titik awal dan titik tujuan
+  var link_ruangan = location.href + "getruangan";
+  $.ajax({
+    url: link_ruangan,
+    method: "get",
+    dataType: "json",
+    success: function (data) {
+      $(".titik_awal").empty();
+      $(".titik_tujuan").empty();
+      for (var i = 0; i < data.length; i++) {
+        $(".titik_awal").append(
+          `<option value="` +
+            data[i].id +
+            `">` +
+            data[i].nama_ruangan +
+            `</option>`
+        );
+        $(".titik_tujuan").append(
+          `<option value="` +
+            data[i].id +
+            `">` +
+            data[i].nama_ruangan +
+            `</option>`
+        );
+      }
+    },
+  });
+
+  // display map
+  var mapOptions = {
+    center: { lat: -0.836261, lng: 119.893715 },
+    zoom: 17,
+    mapTypeId: google.maps.MapTypeId.ROADMAP,
+  };
+
+  map = new google.maps.Map(
+    document.getElementById("map_polyline"),
+    mapOptions
+  );
+
+  var marker;
+  google.maps.event.addListener(map, "click", function (event) {
+    let latitude = event.latLng.lat();
+    let longitude = event.latLng.lng();
+    $("#latitude-ruangan").val(latitude);
+    $("#longitude-ruangan").val(longitude);
+
+    if (marker) {
+      marker.setMap(null);
+    }
+
+    marker = new google.maps.Marker({
+      position: event.latLng,
+      map: map,
+      icon: icon,
+    });
+  });
+});
+// --/ tambah data ruangan
+
 // alert edit gedung
 $(function () {
   var Toast = Swal.mixin({
