@@ -238,6 +238,7 @@ function addNewPolyline() {
     dataType: "json",
     success: function (data) {
       console.log(data);
+      location.href = "/";
       alert("Polyline berhasil ditambahkan!");
     },
     error: function () {

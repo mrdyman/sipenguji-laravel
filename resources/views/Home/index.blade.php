@@ -35,7 +35,6 @@
                         <div class="card-header border-0 pb-0">
                             <div class="d-flex justify-content-between">
                                 <h3 class="card-title">Peta Gedung Ujian</h3>
-                                <button class="btn btn-sm btn-flat btn-success" id="showPoly">Tampilkan Polyline</button>
                             </div>
                         </div>
                         <div class="card-body pt-2">
@@ -129,7 +128,7 @@
                                             {{ $p['jarak'] }}
                                         </td>
                                         <td>
-                                            <a href="#" class="badge badge-danger hapus-ruangan" id="{{ $p['id'] }}">hapus</a>
+                                            <a href="#" class="badge badge-danger hapus-polyline" id="{{ $p['id'] }}">hapus</a>
                                         </td>
                                     </tr>
                                     @endforeach
