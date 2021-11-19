@@ -432,6 +432,10 @@
                                 <textarea class="form-control" id="polyline_koordinat"></textarea>
                             </div>
 
+                            <div class="form-group row mb-2">
+                                <button type="button" class="btn btn-sm btn-flat btn-danger" id="btn-start">Start</button>
+                            </div>
+
                              <div id="map_polyline" style="height: 300px;"></div>
 
                             <div class="modal-footer">

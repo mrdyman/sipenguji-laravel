@@ -337,38 +337,9 @@ $(".tambah-polyline").on("click", function () {
       }
     },
   });
-
-  // display map
-  var mapOptions = {
-    center: { lat: -0.836261, lng: 119.893715 },
-    zoom: 17,
-    mapTypeId: google.maps.MapTypeId.ROADMAP,
-  };
-
-  map = new google.maps.Map(
-    document.getElementById("map_polyline"),
-    mapOptions
-  );
-
-  var marker;
-  google.maps.event.addListener(map, "click", function (event) {
-    let latitude = event.latLng.lat();
-    let longitude = event.latLng.lng();
-    $("#latitude-ruangan").val(latitude);
-    $("#longitude-ruangan").val(longitude);
-
-    if (marker) {
-      marker.setMap(null);
-    }
-
-    marker = new google.maps.Marker({
-      position: event.latLng,
-      map: map,
-      icon: icon,
-    });
-  });
+  mapListener();
 });
-// --/ tambah data ruangan
+// --/ tambah data polyline
 
 // alert edit gedung
 $(function () {

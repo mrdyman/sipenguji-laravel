@@ -208,6 +208,7 @@
 
     <!-- script to organize data CRUD -->
     <script src="{{ url('assets/vendor') }}/dist/js/myscript.js"></script>
+    <script src="{{ url('assets/vendor') }}/dist/js/polyline.js"></script>
 
 </body>
 
