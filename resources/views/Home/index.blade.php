@@ -188,10 +188,10 @@
                 <div class="col-lg">
                     <div class="card">
                         <div class="card-header border-0">
-                            <h3 class="card-title">Jadwal Ujian</h3>
+                            <h3 class="card-title">Data Jadwal Ujian</h3>
                             <div class="card-tools">
-                                <a href="#" class="btn btn-tool btn-sm">
-                                    <i class="fas fa-plus-square tambah-jadwal" data-toggle="modal"></i>
+                                <a href="#" class="btn btn-tool btn-sm tambah-jadwal" data-toggle="modal">
+                                    <i class="fas fa-plus-square"></i>
                                 </a>
                             </div>
                         </div>
@@ -220,8 +220,8 @@
                                         <td>{{ $mJadwal['jumlah_peserta'] }}</td>
                                         <td>{{ $mJadwal['sesi'] }}</td>
                                         <td>
-                                            <a href="#" class="badge badge-warning edit-gedung" id="{{ $gedung['id'] }}" data-toggle="modal">edit</a>
-                                            <a href="#" class="badge badge-danger hapus-gedung" id="{{ $gedung['id'] }}">hapus</a>
+                                            <a href="#" class="badge badge-warning edit-jadwal" id="{{ $mJadwal['id'] }}" data-toggle="modal">edit</a>
+                                            <a href="#" class="badge badge-danger hapus-jadwal" id="{{ $mJadwal['id'] }}">hapus</a>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -438,6 +438,95 @@
 
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-sm btn-flat btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="modal-body modal-tambah-jadwal">
+                        <form method="post" action="{{ url('/jadwal') }}">
+                            @csrf
+                            <div class="form-group row mb-2">
+                                <label for="Nama" class="col-sm-2 col-form-label col-form-label-sm">Jadwal</label>
+                                <div class="col-sm-10">
+                                    <input type="datetime-local" class="form-control form-control-sm" id="jadwal_ujian" placeholder="Jadwal Ujian" name="jadwal_ujian">
+                                </div>
+                            </div>
+                            <div class="form-group row mb-2">
+                                <label for="alamat" class="col-sm-2 col-form-label col-form-label-sm">Jenis Ujian</label>
+                                <div class="col-sm-10">
+                                    <select class="form-control form-control-sm" name="jenis_ujian_jadwal">
+                                        <option>SAINTEK</option>
+                                        <option>SOSHUM</option>
+                                        <option>CAMPURAN</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row mb-2">
+                                <label for="sesi" class="col-sm-2 col-form-label col-form-label-sm">Sesi</label>
+                                <div class="col-sm-10">
+                                    <select class="form-control form-control-sm" name="sesi">
+                                        <option>1</option>
+                                        <option>2</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row mb-2">
+                                <label for="alamat" class="col-sm-2 col-form-label col-form-label-sm">Alamat</label>
+                                <div class="col-sm-10">
+                                    <select name="id_ruangan" class="form-control form-control-sm select-ruangan-jadwal">
+                                       
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-sm btn-flat btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-sm btn-flat btn-success btn-simpan-jadwal">Simpan</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="modal-body modal-edit-jadwal">
+                        <form method="post" action="{{ url('/jadwal') }}">
+                            @method('put')
+                            @csrf
+                            <div class="form-group row mb-2">
+                                <label for="Nama" class="col-sm-2 col-form-label col-form-label-sm">Jadwal</label>
+                                <div class="col-sm-10">
+                                    <input type="datetime-local" class="form-control form-control-sm" id="jadwal_ujian_edit" placeholder="Jadwal Ujian" name="jadwal_ujian">
+                                </div>
+                            </div>
+                            <div class="form-group row mb-2">
+                                <label for="alamat" class="col-sm-2 col-form-label col-form-label-sm">Jenis Ujian</label>
+                                <div class="col-sm-10">
+                                    <select class="form-control form-control-sm" name="jenis_ujian_jadwal">
+                                        <option>SAINTEK</option>
+                                        <option>SOSHUM</option>
+                                        <option>CAMPURAN</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row mb-2">
+                                <label for="sesi" class="col-sm-2 col-form-label col-form-label-sm">Sesi</label>
+                                <div class="col-sm-10">
+                                    <select class="form-control form-control-sm" name="sesi">
+                                        <option>1</option>
+                                        <option>2</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row mb-2">
+                                <label for="alamat" class="col-sm-2 col-form-label col-form-label-sm">Alamat</label>
+                                <div class="col-sm-10">
+                                    <select name="id_ruangan" class="form-control form-control-sm select-ruangan-jadwal-edit">
+                                       
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-sm btn-flat btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-sm btn-flat btn-success btn-update-jadwal">Update</button>
                             </div>
                         </form>
                     </div>

@@ -9,6 +9,7 @@ $(document).ready(function () {
     $(".modal-tambah-ruangan").hide();
     $(".modal-edit-ruangan").hide();
     $(".modal-tambah-polyline").hide();
+    $(".modal-tambah-jadwal").hide();
     $(".modal-tambah-gedung").show();
   });
   // --/ tambah data gedung
@@ -29,6 +30,7 @@ $(document).ready(function () {
     $(".modal-tambah-ruangan").hide();
     $(".modal-edit-ruangan").hide();
     $(".modal-tambah-polyline").hide();
+    $(".modal-tambah-jadwal").hide();
 
     $(".edit-modal-gedung").show();
 
@@ -58,6 +60,7 @@ $(document).ready(function () {
     $(".modal-tambah-gedung").hide();
     $(".modal-edit-ruangan").hide();
     $(".modal-tambah-polyline").hide();
+    $(".modal-tambah-jadwal").hide();
 
     $(".modal-tambah-ruangan").show();
 
@@ -122,6 +125,7 @@ $(document).ready(function () {
     $(".edit-modal-gedung").hide();
     $(".modal-tambah-ruangan").hide();
     $(".modal-tambah-polyline").hide();
+    $(".modal-tambah-jadwal").hide();
     $(".modal-edit-ruangan").show();
 
     var id = $(this).attr("id");
@@ -311,6 +315,7 @@ $(".tambah-polyline").on("click", function () {
   $(".modal-tambah-gedung").hide();
   $(".modal-edit-ruangan").hide();
   $(".modal-tambah-ruangan").hide();
+  $(".modal-tambah-jadwal").hide();
 
   $(".modal-tambah-polyline").show();
 
@@ -378,6 +383,73 @@ $(".hapus-polyline").on("click", function (e) {
 });
 
 // -/ hapus polyline
+
+// tambah data jadwal
+$(".tambah-jadwal").on("click", function () {
+  $("#detailModal").modal("show");
+  $("#detailModalLabel").html("Tambah Data Jadwal");
+
+  $(".edit-modal-gedung").hide();
+  $(".modal-tambah-gedung").hide();
+  $(".modal-edit-ruangan").hide();
+  $(".modal-tambah-ruangan").hide();
+  $(".modal-tambah-jadwal").hide();
+  $(".modal-tambah-polyline").hide();
+  $(".modal-tambah-jadwal").show();
+
+  //get data ruangan yang akan dijadikan titik awal dan titik tujuan
+  var link_ruangan = location.href + "getruangan";
+  $.ajax({
+    url: link_ruangan,
+    method: "get",
+    dataType: "json",
+    success: function (data) {
+      $(".select-ruangan-jadwal").empty();
+      for (var i = 0; i < data.length; i++) {
+        $(".select-ruangan-jadwal").append(
+          `<option value="` +
+            data[i].id +
+            `">` +
+            data[i].nama_ruangan +
+            `</option>`
+        );
+      }
+    },
+  });
+});
+// --/ tambah data jadwal
+
+// edit data jadwal
+$(".edit-jadwal").on("click", function () {
+  $("#detailModal").modal("show");
+  $("#detailModalLabel").html("Edit Jadwal");
+
+  //hide form tambah
+  $(".modal-tambah-gedung").hide();
+  $(".modal-tambah-ruangan").hide();
+  $(".modal-edit-ruangan").hide();
+  $(".modal-tambah-polyline").hide();
+  $(".modal-tambah-jadwal").hide();
+  $(".edit-modal-gedung").hide();
+  $(".modal-edit-jadwal").show();
+
+  var id = $(this).attr("id");
+  var link = location.href + "jadwal/" + id;
+
+  $(".modal-body form").attr("action", link);
+
+  $.ajax({
+    url: link,
+    method: "get",
+    dataType: "json",
+    success: function (data) {
+      console.log(data[2]["jadwal"]);
+      $("#jadwal_ujian_edit").val(data[2]["jadwal"]);
+      $("#alamat_modal").val(data.alamat);
+    },
+  });
+});
+// --/ edit data jadwal
 
 // alert edit gedung
 $(function () {

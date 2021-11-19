@@ -42,3 +42,7 @@ Route::resource('ruangan', 'RuanganController');
 
 //displayPolyline
 Route::post('/polyline/displayPolyline', 'PolylineController@displayPolyline');
+
+//jadwal
+Route::post('/jadwal', 'HomeController@createJadwal');
+Route::get('/jadwal/{id}', 'HomeController@getJadwal');
