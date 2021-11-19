@@ -94,4 +94,22 @@ class PolylineController extends Controller
     {
         //
     }
+
+    public function getMarker()
+    {
+        $ruangan = Http::get('http://localhost/sipenguji-api/api/ruangan');
+        $response = $ruangan->json();
+        return $response['data'];
+    }
+
+    public function displayPolyline()
+    {
+        $client = Http::get('http://localhost/sipenguji-api/api/polyline/display');
+
+        if ($client->successful()) {
+            return $response = $client->json(['data']);
+        } else {
+            echo 'Failed connect to API';
+        }
+    }
 }

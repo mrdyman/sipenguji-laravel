@@ -25,6 +25,9 @@ Route::resource('home', 'HomeController');
 // getMarker
 Route::get('/getmarker', 'HomeController@getMarker');
 
+//getmarker untuk menu polyline
+Route::get('/polylinegetmarker', 'HomeController@getMarker');
+
 //getGedung
 Route::get('/getgedung', 'HomeController@getGedung');
 
@@ -36,3 +39,6 @@ Route::resource('polyline', 'PolylineController');
 
 // ruangan
 Route::resource('ruangan', 'RuanganController');
+
+//displayPolyline
+Route::post('/polyline/displayPolyline', 'PolylineController@displayPolyline');

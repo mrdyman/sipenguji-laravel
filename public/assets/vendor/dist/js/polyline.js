@@ -74,6 +74,55 @@ function mapListener() {
   });
 }
 
+function displayPolyline() {
+  $.ajaxSetup({
+    headers: {
+      "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+    },
+  });
+  $.ajax({
+    url: location.href + "/displayPolyline",
+    method: "post",
+    dataType: "json",
+    success: function (data) {
+      var koor = data;
+      i = 0;
+      var latitude = [];
+      var longitude = [];
+
+      $.each(koor, function (key1, value1) {
+        $.each(value1, function (key2, value2) {
+          $.each(value2, function () {
+            latitude[i] = koor[key1][key2]["lat"];
+            longitude[i] = koor[key1][key2]["lng"];
+            i++;
+          });
+        });
+      });
+
+      $.each(latitude, function (key1, value1) {
+        var poly = [];
+        $.each(value1, function (key2) {
+          var pos = new google.maps.LatLng(
+            latitude[key1][key2],
+            longitude[key1][key2]
+          );
+          poly.push(pos);
+          var garis = new google.maps.Polyline({
+            path: poly,
+            strokeColor: "#FF00AA",
+            strokeWeight: 5,
+          });
+          garis.setMap(map);
+        });
+      });
+    },
+    error: function () {
+      console.log("Error 404");
+    },
+  });
+}
+
 function addMarker(data) {
   var infowindow = new google.maps.InfoWindow();
   var content =

@@ -5,6 +5,7 @@
 @section('content')
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid">
@@ -32,7 +33,7 @@
                         <div class="card-header border-0 pb-2">
                             <div class="d-flex justify-content-between">
                                 <h3 class="card-title">Peta Polyline</h3>
-                                <button href="" id="addPoly" class="btn btn-sm btn-warning">Klik untuk tambah Polyline</button>
+                                <button href="" id="show-polyline" onclick="displayPolyline()" class="btn btn-sm btn-warning">Tampilkan Polyline</button>
                             </div>
                         </div>
                         <div class="card-body pt-1">
