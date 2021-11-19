@@ -10,6 +10,7 @@ $(document).ready(function () {
     $(".modal-edit-ruangan").hide();
     $(".modal-tambah-polyline").hide();
     $(".modal-tambah-jadwal").hide();
+    $(".modal-edit-jadwal").hide();
     $(".modal-tambah-gedung").show();
   });
   // --/ tambah data gedung
@@ -31,6 +32,7 @@ $(document).ready(function () {
     $(".modal-edit-ruangan").hide();
     $(".modal-tambah-polyline").hide();
     $(".modal-tambah-jadwal").hide();
+    $(".modal-edit-jadwal").hide();
 
     $(".edit-modal-gedung").show();
 
@@ -61,6 +63,7 @@ $(document).ready(function () {
     $(".modal-edit-ruangan").hide();
     $(".modal-tambah-polyline").hide();
     $(".modal-tambah-jadwal").hide();
+    $(".modal-edit-jadwal").hide();
 
     $(".modal-tambah-ruangan").show();
 
@@ -126,6 +129,7 @@ $(document).ready(function () {
     $(".modal-tambah-ruangan").hide();
     $(".modal-tambah-polyline").hide();
     $(".modal-tambah-jadwal").hide();
+    $(".modal-edit-jadwal").hide();
     $(".modal-edit-ruangan").show();
 
     var id = $(this).attr("id");
@@ -316,6 +320,7 @@ $(".tambah-polyline").on("click", function () {
   $(".modal-edit-ruangan").hide();
   $(".modal-tambah-ruangan").hide();
   $(".modal-tambah-jadwal").hide();
+  $(".modal-edit-jadwal").hide();
 
   $(".modal-tambah-polyline").show();
 
@@ -393,7 +398,7 @@ $(".tambah-jadwal").on("click", function () {
   $(".modal-tambah-gedung").hide();
   $(".modal-edit-ruangan").hide();
   $(".modal-tambah-ruangan").hide();
-  $(".modal-tambah-jadwal").hide();
+  $(".modal-edit-jadwal").hide();
   $(".modal-tambah-polyline").hide();
   $(".modal-tambah-jadwal").show();
 
@@ -438,18 +443,71 @@ $(".edit-jadwal").on("click", function () {
 
   $(".modal-body form").attr("action", link);
 
+  //getData jadwal
   $.ajax({
     url: link,
     method: "get",
     dataType: "json",
     success: function (data) {
-      console.log(data[2]["jadwal"]);
-      $("#jadwal_ujian_edit").val(data[2]["jadwal"]);
-      $("#alamat_modal").val(data.alamat);
+      $("#jadwal_ujian_edit").val(data[0]["jadwal"]);
     },
   });
 });
+
+//getData ruangan untuk jadikan alamat jadwal
+var link_ruangan = location.href + "getruangan";
+$.ajax({
+  url: link_ruangan,
+  method: "get",
+  dataType: "json",
+  success: function (data) {
+    $(".select-ruangan-jadwal-edit").empty();
+    for (var i = 0; i < data.length; i++) {
+      $(".select-ruangan-jadwal-edit").append(
+        `<option value="` +
+          data[i].id +
+          `">` +
+          data[i].nama_ruangan +
+          `</option>`
+      );
+    }
+  },
+});
 // --/ edit data jadwal
+
+// hapus data jadwal
+$(".hapus-jadwal").on("click", function (e) {
+  e.preventDefault();
+  var id = $(this).attr("id");
+
+  Swal.fire({
+    title: "Anda yakin?",
+    text: "Data tidak dapat dikembalikan!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Ya, hapus data!",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      $.ajaxSetup({
+        headers: {
+          "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+        },
+      });
+      $.ajax({
+        url: location.href + "jadwal/" + id,
+        type: "delete",
+        success: function () {
+          Swal.fire("Terhapus!", "data jadwal berhasil dihapus.", "success");
+          location.href = "/";
+        },
+      });
+    }
+  });
+});
+
+// -/ hapus jadwal
 
 // alert edit gedung
 $(function () {

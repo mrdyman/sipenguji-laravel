@@ -44,5 +44,4 @@ Route::resource('ruangan', 'RuanganController');
 Route::post('/polyline/displayPolyline', 'PolylineController@displayPolyline');
 
 //jadwal
-Route::post('/jadwal', 'HomeController@createJadwal');
-Route::get('/jadwal/{id}', 'HomeController@getJadwal');
+Route::resource('jadwal', 'JadwalController');

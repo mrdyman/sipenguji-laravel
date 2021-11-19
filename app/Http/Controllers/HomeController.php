@@ -164,45 +164,4 @@ class HomeController extends Controller
         $response = $gedung->json();
         return $response['data'];
     }
-
-    public function createJadwal(Request $request)
-    {
-        $client = Http::post('http://localhost/sipenguji-api/api/jadwal', [
-            'jadwal' => $request->jadwal_ujian,
-            'sesi' => $request->sesi,
-            'id_ruangan' => $request->id_ruangan
-        ]);
-
-        if ($client->successful()) {
-            return redirect('/')->with('status', 'Jadwal berhasil ditambahkan!');
-        } else {
-            $errorCode = $client->status();
-            return redirect('/')->with('error', 'Terdapat kesalahan! Error Code:' . $errorCode);
-        }
-    }
-
-    public function getJadwal()
-    {
-        $jadwal = Http::get('http://localhost/sipenguji-api/api/jadwal');
-        $dataJadwal = $jadwal->json()['data'];
-        echo json_encode($dataJadwal);
-    }
-
-    public function updateJadwal(Request $request, $id)
-    {
-        $client = Http::put('http://localhost/sipenguji-api/api/jadwal', [
-            'id' => $id,
-            'jadwal' => $request->jadwal_ujian,
-            'sesi' => $request->sesi,
-            'id_ruangan' => $request->id_ruangan
-        ]);
-
-        if ($client->successful()) {
-            $message = $client->json(['message']);
-            return redirect('/')->with('status', $message);
-        } else {
-            $errorCode = $client->status();
-            return redirect('/')->with('error', 'something wrong! with code: ' . $errorCode);
-        }
-    }
 }

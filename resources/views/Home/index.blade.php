@@ -443,7 +443,7 @@
                     </div>
 
                     <div class="modal-body modal-tambah-jadwal">
-                        <form method="post" action="{{ url('/jadwal') }}">
+                        <form method="post" action="{{ url('jadwal') }}">
                             @csrf
                             <div class="form-group row mb-2">
                                 <label for="Nama" class="col-sm-2 col-form-label col-form-label-sm">Jadwal</label>
@@ -487,7 +487,7 @@
                     </div>
 
                     <div class="modal-body modal-edit-jadwal">
-                        <form method="post" action="{{ url('/jadwal') }}">
+                        <form method="post" action="{{ url('jadwal') }}">
                             @method('put')
                             @csrf
                             <div class="form-group row mb-2">
