@@ -129,7 +129,6 @@
                                             {{ $p['jarak'] }}
                                         </td>
                                         <td>
-                                            <a href="#" class="badge badge-warning edit-ruangan" id="{{ $p['id'] }}" data-toggle="modal">edit</a>
                                             <a href="#" class="badge badge-danger hapus-ruangan" id="{{ $p['id'] }}">hapus</a>
                                         </td>
                                     </tr>
@@ -440,7 +439,6 @@
 
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-sm btn-flat btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-sm btn-flat btn-success btn-simpan-ruangan">Simpan</button>
                             </div>
                         </form>
                     </div>

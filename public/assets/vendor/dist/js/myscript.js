@@ -8,6 +8,7 @@ $(document).ready(function () {
     $(".edit-modal-gedung").hide();
     $(".modal-tambah-ruangan").hide();
     $(".modal-edit-ruangan").hide();
+    $(".modal-tambah-polyline").hide();
     $(".modal-tambah-gedung").show();
   });
   // --/ tambah data gedung
@@ -27,6 +28,7 @@ $(document).ready(function () {
     $(".modal-tambah-gedung").hide();
     $(".modal-tambah-ruangan").hide();
     $(".modal-edit-ruangan").hide();
+    $(".modal-tambah-polyline").hide();
 
     $(".edit-modal-gedung").show();
 
@@ -55,6 +57,7 @@ $(document).ready(function () {
     $(".edit-modal-gedung").hide();
     $(".modal-tambah-gedung").hide();
     $(".modal-edit-ruangan").hide();
+    $(".modal-tambah-polyline").hide();
 
     $(".modal-tambah-ruangan").show();
 
@@ -118,6 +121,7 @@ $(document).ready(function () {
     $(".modal-tambah-gedung").hide();
     $(".edit-modal-gedung").hide();
     $(".modal-tambah-ruangan").hide();
+    $(".modal-tambah-polyline").hide();
     $(".modal-edit-ruangan").show();
 
     var id = $(this).attr("id");

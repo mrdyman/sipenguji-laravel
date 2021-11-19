@@ -171,8 +171,13 @@ function addNewPolyline() {
   var mJarak = jarak;
 
   // jalankan ajax untuk simpan polyline ke database
+  $.ajaxSetup({
+    headers: {
+      "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+    },
+  });
   $.ajax({
-    url: "http://localhost/sipenguji/tambahPolyManual.php",
+    url: location.href + "polyline",
     method: "post",
     data: {
       tAwal: titik_awal,
@@ -184,6 +189,7 @@ function addNewPolyline() {
     dataType: "json",
     success: function (data) {
       console.log(data);
+      alert("Polyline berhasil ditambahkan!");
     },
     error: function () {
       console.log("have an error!");

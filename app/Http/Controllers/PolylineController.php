@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class PolylineController extends Controller
 {
@@ -34,7 +35,19 @@ class PolylineController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $client = Http::post('http://localhost/sipenguji-api/api/polyline', [
+            'titik_awal' => $request->tAwal,
+            'titik_tujuan' => $request->tTujuan,
+            'jalur' => $request->jalur,
+            'koordinat' => $request->koordinat,
+            'jarak' => $request->jarak
+        ]);
+
+        if ($client->successful()) {
+            echo json_encode("Data polyline berhasil ditambahkan!");
+        } else {
+            echo json_encode($client->status());
+        }
     }
 
     /**
