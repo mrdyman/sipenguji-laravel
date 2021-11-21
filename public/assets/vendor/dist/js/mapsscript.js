@@ -28,7 +28,7 @@ function initMap() {
 }
 
 function getMarker() {
-  var link = location.href;
+  var link = "/";
   $.ajax({
     url: link + "getmarker",
     method: "get",

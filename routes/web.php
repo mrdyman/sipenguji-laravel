@@ -45,3 +45,8 @@ Route::post('/polyline/displayPolyline', 'PolylineController@displayPolyline');
 
 //jadwal
 Route::resource('jadwal', 'JadwalController');
+
+//floyd-warshall
+Route::resource('floyd-warshall', 'FloydWarshallController');
+
+Route::post('floyd-warshall/calculate', 'FloydWarshallController@calculate');

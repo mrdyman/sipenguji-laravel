@@ -110,7 +110,7 @@
                             </ul>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{ url('/floydwarshall')}}" class="nav-link">
+                                    <a href="{{ url('/floyd-warshall')}}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Floyd-Warshall</p>
                                     </a>
@@ -209,6 +209,7 @@
     <!-- script to organize data CRUD -->
     <script src="{{ url('assets/vendor') }}/dist/js/myscript.js"></script>
     <script src="{{ url('assets/vendor') }}/dist/js/polyline.js"></script>
+    <script src="{{ url('assets/vendor') }}/dist/js/floyd-warshall.js"></script>
 
 </body>
 

@@ -81,7 +81,7 @@ function displayPolyline() {
     },
   });
   $.ajax({
-    url: location.href + "/displayPolyline",
+    url: "/polyline/displayPolyline",
     method: "post",
     dataType: "json",
     success: function (data) {

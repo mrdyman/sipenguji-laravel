@@ -455,7 +455,7 @@ $(".edit-jadwal").on("click", function () {
 });
 
 //getData ruangan untuk jadikan alamat jadwal
-var link_ruangan = location.href + "getruangan";
+var link_ruangan = "/getruangan";
 $.ajax({
   url: link_ruangan,
   method: "get",
