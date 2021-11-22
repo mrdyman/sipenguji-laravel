@@ -1,6 +1,6 @@
 @extends('layout.main')
 
-@section('title', 'Home')
+@section('title', 'SIPENGUJI | Polyline')
 
 @section('content')
 <!-- Content Wrapper. Contains page content -->

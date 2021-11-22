@@ -1,6 +1,6 @@
 @extends('layout.main')
 
-@section('title', 'Home')
+@section('title', 'SIPENGUJI | Dashboard')
 
 @section('content')
 <!-- Content Wrapper. Contains page content -->

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>@yield('title')</title>
+    <title id="title">@yield('title')</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -84,7 +84,7 @@
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-                        <li class="nav-item menu-openz">
+                        <li class="nav-item menu-open">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
@@ -94,7 +94,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{ url('') }}" class="nav-link active">
+                                    <a href="{{ url('') }}" class="nav-link side-title-home">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Home</p>
                                     </a>
@@ -102,7 +102,7 @@
                             </ul>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{ url('/polyline')}}" class="nav-link">
+                                    <a href="{{ url('/polyline')}}" class="nav-link side-title-polyline">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Polyline</p>
                                     </a>
@@ -110,7 +110,7 @@
                             </ul>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{ url('/floyd-warshall')}}" class="nav-link">
+                                    <a href="{{ url('/floyd-warshall')}}" class="nav-link side-title-floyd-warshall">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Floyd-Warshall</p>
                                     </a>
@@ -207,6 +207,7 @@
     <script src="{{ url('assets/vendor') }}/dist/js/demo.js"></script>
 
     <!-- script to organize data CRUD -->
+    <script src="{{ url('assets/vendor') }}/dist/js/sidebar-script.js"></script>
     <script src="{{ url('assets/vendor') }}/dist/js/myscript.js"></script>
     <script src="{{ url('assets/vendor') }}/dist/js/polyline.js"></script>
     <script src="{{ url('assets/vendor') }}/dist/js/floyd-warshall.js"></script>
