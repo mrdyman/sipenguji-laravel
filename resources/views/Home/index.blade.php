@@ -307,7 +307,7 @@
                     </div>
 
                     <div class="modal-body modal-tambah-ruangan">
-                        <form method="post" action="{{ url('ruangan') }}">
+                        <form method="post" action="{{ url('/ruangan') }}">
                             @csrf
                             <div class="form-group row mb-2">
                                 <label for="Nama" class="col-sm-2 col-form-label col-form-label-sm">Nama</label>

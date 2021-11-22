@@ -507,7 +507,40 @@ $(".hapus-jadwal").on("click", function (e) {
   });
 });
 
-// -/ hapus jadwal
+// hapus data hasil algoritma
+$(".hapus_hasil").on("click", function (e) {
+  e.preventDefault();
+  var id = $(this).attr("id");
+  console.log(id);
+
+  Swal.fire({
+    title: "Anda yakin?",
+    text: "Data tidak dapat dikembalikan!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Ya, hapus data!",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      $.ajaxSetup({
+        headers: {
+          "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+        },
+      });
+      $.ajax({
+        url: "/floyd-warshall/" + id,
+        type: "delete",
+        success: function () {
+          Swal.fire("Terhapus!", "data berhasil dihapus.", "success");
+          location.href = "/floyd-warshall";
+        },
+      });
+    }
+  });
+});
+
+// -/ hapus hasil
 
 // alert edit gedung
 $(function () {

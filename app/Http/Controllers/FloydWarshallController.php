@@ -82,7 +82,16 @@ class FloydWarshallController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $client = Http::asForm()->delete('http://localhost/sipenguji-api/api/floyd', [
+            'id' => $id
+        ]);
+        if ($client->successful()) {
+            if ($client->json(['status'])) {
+                return redirect('/');
+            }
+        } else {
+            return $client->json();
+        }
     }
 
     /**
@@ -100,9 +109,19 @@ class FloydWarshallController extends Controller
         ]);
 
         if ($response->successful()) {
-            dd($response->json());
+            return $response->json();
         } else {
             dd($response->status());
+        }
+    }
+
+    public function hasil()
+    {
+        $hasil = Http::get('http://localhost/sipenguji-api/api/floyd/hasil');
+        if ($hasil->successful()) {
+            return $hasil->json();
+        } else {
+            return $hasil->status();
         }
     }
 }

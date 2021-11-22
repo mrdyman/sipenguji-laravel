@@ -27,10 +27,10 @@
     <!-- Main content -->
     <div class="content" onload="initMap()">
         <div class="row ml-2 mb-2">
-            <select class="mr-2 select-ruangan-source" name="jenis_ujian_jadwal">
+            <select class="mr-2 select-ruangan-source" id="select-ruangan-source" name="jenis_ujian_jadwal">
                 {{-- {{-- this populated with ajax --}}
             </select>
-            <select class="select-ruangan-destination" name="jenis_ujian_jadwal">
+            <select class="select-ruangan-destination" id="select-ruangan-destination" name="jenis_ujian_jadwal">
                 {{-- this populated with ajax --}}
             </select>
             <button type="submit" class="ml-2 btn btn-sm btn-flat btn-success btn-hitung" onclick="floyd_Warshall()">Hitung</button>
@@ -61,7 +61,7 @@
                         </div>
                         <div class="card-body pt-1">
                             <label for="polyline_koordinat">Rute yang dilalui :</label>
-                                <textarea class="form-control" id="polyline_koordinat"></textarea>
+                                <textarea class="form-control" id="rute"></textarea>
                         </div>
                         <div class="card-body pt-1">
                             <div class="row">
@@ -105,11 +105,14 @@
                                         <td>{{ $hasil['titik_awal'] }}</td>
                                         <td>{{ $hasil['titik_tujuan'] }}</td>
                                         <td>{{ $hasil['rute'] }}</td>
-                                        <td>{{ $hasil['koordinat'] }}</td>
                                         <td>{{ $hasil['jarak'] }}</td>
+                                        <?php if (strlen($hasil['koordinat']) > 30) { ?>
+                                            <td>{{ substr($hasil['koordinat'], 0, 29) }}</td>
+                                            <?php } else { ?>
+                                            <td>{{ $hasil['koordinat'] }}</td>
+                                            <?php } ?>
                                         <td>
-                                            <a href="#" class="badge badge-warning">edit</a>
-                                            <a href="#" class="badge badge-danger">hapus</a>
+                                            <a href="#" class="badge badge-danger hapus_hasil" id="{{ $hasil['id'] }}">hapus</a>
                                         </td>
                                     </tr>
                                     @endforeach

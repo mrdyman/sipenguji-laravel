@@ -50,3 +50,5 @@ Route::resource('jadwal', 'JadwalController');
 Route::resource('floyd-warshall', 'FloydWarshallController');
 
 Route::post('floyd-warshall/calculate', 'FloydWarshallController@calculate');
+
+Route::post('floyd-warshall/hasil', 'FloydWarshallController@hasil');
