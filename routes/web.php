@@ -52,3 +52,6 @@ Route::resource('floyd-warshall', 'FloydWarshallController');
 Route::post('floyd-warshall/calculate', 'FloydWarshallController@calculate');
 
 Route::post('floyd-warshall/hasil', 'FloydWarshallController@hasil');
+
+//mahasiswa
+Route::resource('mahasiswa', 'MahasiswaController');

@@ -542,6 +542,39 @@ $(".hapus_hasil").on("click", function (e) {
 
 // -/ hapus hasil
 
+// hapus data mahasiswa
+$(".hapus_mahasiswa").on("click", function (e) {
+  e.preventDefault();
+  var id = $(this).attr("id");
+
+  Swal.fire({
+    title: "Anda yakin?",
+    text: "Data tidak dapat dikembalikan!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Ya, hapus data!",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      $.ajaxSetup({
+        headers: {
+          "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+        },
+      });
+      $.ajax({
+        url: "/mahasiswa/" + id,
+        type: "delete",
+        success: function () {
+          Swal.fire("Terhapus!", "data mahasiswa berhasil dihapus.", "success");
+          location.href = "/mahasiswa";
+        },
+      });
+    }
+  });
+});
+// -/ hapus mahasiswa
+
 // alert edit gedung
 $(function () {
   var Toast = Swal.mixin({
