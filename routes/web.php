@@ -55,3 +55,10 @@ Route::post('floyd-warshall/hasil', 'FloydWarshallController@hasil');
 
 //mahasiswa
 Route::resource('mahasiswa', 'MahasiswaController');
+
+//auth
+Route::get('/auth/logout', 'AuthController@logout');
+
+Route::resource('auth', 'AuthController');
+
+Route::post('auth/login', 'AuthController@login');

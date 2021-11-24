@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Session;
 
 class HomeController extends Controller
 {
@@ -14,6 +15,10 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $user = Session::get('user');
+        if (!$user) {
+            return redirect('/auth');
+        }
         $gedung = Http::get('http://localhost/sipenguji-api/api/gedung');
         $response = $gedung->json();
         $dataGedung = $response['data'];

@@ -75,7 +75,7 @@
                         <img src="{{ url('assets/vendor') }}/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">Dyman</a>
+                        <a href="#" class="d-block">{{ session()->get('user')['username'] }}</a>
                     </div>
                 </div>
 
@@ -124,6 +124,10 @@
                                 <p>Data Mahasiswa</p>
                             </a>
                         </li>
+                        <a href="{{ url('auth/logout') }}" class="nav-link">
+                            <i class="nav-icon fas fa-sign-out-alt text-danger"></i>
+                            <p class="text">Logout</p>
+                        </a>
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
