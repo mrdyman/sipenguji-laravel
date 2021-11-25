@@ -17,7 +17,11 @@ class AuthController extends Controller
     {
         $user = Session::get('user');
         if ($user) {
-            return redirect('/');
+            if ($user['role'] == 0) {
+                return redirect('/');
+            } else {
+                return redirect('mahasiswa');
+            }
         }
         return view('auth.index');
     }
@@ -116,7 +120,11 @@ class AuthController extends Controller
             $dataUser = $client->json(['data']);
             Session::put('user', $dataUser);
 
-            return redirect('/home')->with('status', 'welcome!');
+            if ($dataUser['role'] == 0) {
+                return redirect('/home')->with('status', 'welcome!');
+            } else {
+                return redirect('mahasiswa')->with('status', 'welcome!');
+            }
         } else {
             $errorCode = $client->status();
             return redirect('/auth')->with('errorLogin', $client->json(['message']));
@@ -127,5 +135,10 @@ class AuthController extends Controller
     {
         $request->session()->flush();
         return redirect('/auth');
+    }
+
+    public function tes()
+    {
+        //
     }
 }

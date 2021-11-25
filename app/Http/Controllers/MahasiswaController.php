@@ -14,9 +14,7 @@ class MahasiswaController extends Controller
      */
     public function index()
     {
-        $response = Http::get('http://localhost/sipenguji-api/api/mahasiswa');
-        $mahasiswa = $response->json()['data'];
-        return view('home.mahasiswa.index', ['mahasiswa' => $mahasiswa]);
+        return view('home.mahasiswa.biodata');
     }
 
     /**
@@ -92,5 +90,10 @@ class MahasiswaController extends Controller
         } else {
             return $client->json();
         }
+    }
+
+    public function biodata()
+    {
+        return view('home.mahasiswa.biodata');
     }
 }

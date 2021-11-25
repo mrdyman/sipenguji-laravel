@@ -84,6 +84,7 @@
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
+               @if(session()->get('user')['role'] == 0)
                         <li class="nav-item dashboard menu-open">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -117,13 +118,24 @@
                                 </li>
                             </ul>
                         </li>
+                @endif
                         <li class="nav-header">Mahasiswa</li>
+                @if(session()->get('user')['role'] == 0)
                         <li class="nav-item">
-                            <a href="{{ url('/mahasiswa') }}" class="nav-link side-title-data-mahasiswa">
+                            <a href="{{ url('/home/mahasiswa') }}" class="nav-link side-title-data-mahasiswa">
                                 <i class="nav-icon fas fa-database"></i>
                                 <p>Data Mahasiswa</p>
                             </a>
                         </li>
+                @endif
+                @if(session()->get('user')['role'] == 1)
+                        <li class="nav-item">
+                            <a href="{{ url('/mahasiswa/biodata') }}" class="nav-link side-title-biodata">
+                                <i class="nav-icon fas fa-graduation-cap"></i>
+                                <p>Biodata</p>
+                            </a>
+                        </li>
+                @endif
                         <a href="{{ url('auth/logout') }}" class="nav-link">
                             <i class="nav-icon fas fa-sign-out-alt text-danger"></i>
                             <p class="text">Logout</p>

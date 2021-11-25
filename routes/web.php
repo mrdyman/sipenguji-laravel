@@ -18,43 +18,46 @@ use Illuminate\Support\Facades\Route;
 // });
 
 // home
-Route::get('/', 'HomeController@index');
+Route::get('/home/mahasiswa', 'HomeController@mahasiswa')->middleware('admin');
+Route::get('/', 'HomeController@index')->middleware('admin');
 Route::delete('/', 'HomeController@index');
-Route::resource('home', 'HomeController');
+Route::resource('home', 'HomeController')->middleware('admin');
 
 // getMarker
-Route::get('/getmarker', 'HomeController@getMarker');
+Route::get('/getmarker', 'HomeController@getMarker')->middleware('admin');
 
 //getmarker untuk menu polyline
-Route::get('/polylinegetmarker', 'HomeController@getMarker');
+Route::get('/polylinegetmarker', 'HomeController@getMarker')->middleware('admin');
 
 //getGedung
-Route::get('/getgedung', 'HomeController@getGedung');
+Route::get('/getgedung', 'HomeController@getGedung')->middleware('admin');
 
 //getRuangan
-Route::get('/getruangan', 'RuanganController@getRuangan');
+Route::get('/getruangan', 'RuanganController@getRuangan')->middleware('admin');
 
 // polyline
-Route::resource('polyline', 'PolylineController');
+Route::resource('polyline', 'PolylineController')->middleware('admin');
 
 // ruangan
-Route::resource('ruangan', 'RuanganController');
+Route::resource('ruangan', 'RuanganController')->middleware('admin');
 
 //displayPolyline
 Route::post('/polyline/displayPolyline', 'PolylineController@displayPolyline');
 
 //jadwal
-Route::resource('jadwal', 'JadwalController');
+Route::resource('jadwal', 'JadwalController')->middleware('admin');
 
 //floyd-warshall
-Route::resource('floyd-warshall', 'FloydWarshallController');
+Route::resource('floyd-warshall', 'FloydWarshallController')->middleware('admin');
 
 Route::post('floyd-warshall/calculate', 'FloydWarshallController@calculate');
 
 Route::post('floyd-warshall/hasil', 'FloydWarshallController@hasil');
 
 //mahasiswa
-Route::resource('mahasiswa', 'MahasiswaController');
+Route::get('mahasiswa/biodata', 'MahasiswaController@biodata')->middleware('mahasiswa');;
+
+Route::resource('mahasiswa', 'MahasiswaController')->middleware('mahasiswa');
 
 //auth
 Route::get('/auth/logout', 'AuthController@logout');

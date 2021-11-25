@@ -15,10 +15,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $user = Session::get('user');
-        if (!$user) {
-            return redirect('/auth');
-        }
         $gedung = Http::get('http://localhost/sipenguji-api/api/gedung');
         $response = $gedung->json();
         $dataGedung = $response['data'];
@@ -154,6 +150,13 @@ class HomeController extends Controller
         } else {
             return $client->json();
         }
+    }
+
+    public function mahasiswa()
+    {
+        $response = Http::get('http://localhost/sipenguji-api/api/mahasiswa');
+        $mahasiswa = $response->json()['data'];
+        return view('home.mahasiswa.index', ['mahasiswa' => $mahasiswa]);
     }
 
     public function getMarker()

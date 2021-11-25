@@ -16,4 +16,10 @@ if (title == "SIPENGUJI | Mahasiswa") {
   $(".side-title-polyline").removeClass("active");
   $(".side-title-home").removeClass("active");
   $(".dashboard").removeClass("menu-open");
+} else if (title == "SIPENGUJI | Biodata") {
+  $(".side-title-biodata").addClass("active");
+  $(".side-title-floyd-warshall").removeClass("active");
+  $(".side-title-polyline").removeClass("active");
+  $(".side-title-home").removeClass("active");
+  $(".dashboard").removeClass("menu-open");
 }
