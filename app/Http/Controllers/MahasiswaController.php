@@ -153,6 +153,24 @@ class MahasiswaController extends Controller
 
     public function downloadKartu()
     {
-        //cetak kartu peserta ujian
+        $username = Session::get('user')['username'];
+        $nisn = Http::get('http://localhost/sipenguji-api/api/mahasiswa', [
+            'username' => $username
+        ]);
+        if ($nisn->successful()) {
+            $nisn = $nisn->json()['data']['nisn'];
+        } else {
+            dd($nisn->json());
+        }
+
+        $kartuPeserta = Http::get('http://localhost/sipenguji-api/api/peserta', [
+            'nisn' => $nisn
+        ]);
+
+        if ($kartuPeserta->successful()) {
+            return view('home.mahasiswa.kartu-peserta', ['data' => $kartuPeserta['data'][0]]);
+        } else {
+            dd($kartuPeserta->json());
+        }
     }
 }
