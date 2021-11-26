@@ -15,7 +15,18 @@ class MahasiswaController extends Controller
      */
     public function index()
     {
-        return view('home.mahasiswa.biodata');
+        $username = Session::get('user')['username'];
+        $dataMahasiswa = Http::get('http://localhost/sipenguji-api/api/mahasiswa', [
+            'username' => $username
+        ]);
+        if ($dataMahasiswa->successful()) {
+            if ($dataMahasiswa->json()['status'] == false) {
+                $dataMahasiswa = null;
+            }
+        } else {
+            dd($dataMahasiswa->json());
+        }
+        return view('home.mahasiswa.biodata', ['dataMahasiswa' => $dataMahasiswa]);
     }
 
     /**

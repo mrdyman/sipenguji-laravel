@@ -29,6 +29,57 @@
     <!-- Main content -->
     <div class="content">
         <div class="container-fluid">
+            @if($dataMahasiswa)
+            <div class="col-lg-7">
+                <div class="card card-info">
+                <div class="card-header">
+                    <h3 class="card-title">Biodata</h3>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+                <form action="/mahasiswa" method="POST" class="form-horizontal" enctype="multipart/form-data">
+                    <div class="card-body">
+                    <div class="form-group row">
+                        <label for="email" class="col-sm-2 col-form-label">Nama</label>
+                        <div class="col-sm-10">
+                        <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama Lengkap" value="{{ $dataMahasiswa['data']['nama'] }}" disabled>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="nisn" class="col-sm-2 col-form-label">NISN</label>
+                        <div class="col-sm-10">
+                        <input type="text" class="form-control" id="nisn" name="nisn" placeholder="Nomor Induk Siswa Nasional" value="{{ $dataMahasiswa['data']['nisn'] }}" disabled>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="nik" class="col-sm-2 col-form-label">NIK</label>
+                        <div class="col-sm-10">
+                        <input type="text" class="form-control" id="nik" name="nik" placeholder="NIK" value=" {{ $dataMahasiswa['data']['nik'] }} " disabled>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="nik" class="col-sm-2 col-form-label">Jurusan</label>
+                        <div class="col-sm-10">
+                            <select class="custom-select mb-3" name="jurusan" disabled>
+                                <option selected>{{ $dataMahasiswa['data']['jurusan'] }}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="foto" class="col-sm-2 col-form-label">Pas Foto</label>
+                        <div class="col-sm-10">
+                        <img src="{{ 'http://localhost/sipenguji-api/assets/img/'.$dataMahasiswa['data']['foto'] }}" width="150px" height="190px">
+                        </div>
+                    </div>
+
+                    <div class="map" id="map"></div>
+
+                    </div>
+                    <!-- /.card-body -->
+                </form>
+                </div>
+            </div>
+            @else
 
             <div class="col-lg-7">
                 <div class="card card-info">
@@ -77,6 +128,8 @@
                         </div>
                     </div>
 
+                    <div class="map" id="map"></div>
+
                     </div>
                     <!-- /.card-body -->
                     <div class="card-footer">
@@ -86,6 +139,7 @@
                 </form>
                 </div>
             </div>
+            @endif
         </div>
         <!-- /.container-fluid -->
     </div>
