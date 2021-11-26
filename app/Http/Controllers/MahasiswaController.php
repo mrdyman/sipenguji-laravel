@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Session;
 
 class MahasiswaController extends Controller
 {
@@ -35,7 +36,24 @@ class MahasiswaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $gambar = $request->file('img');
+        $username = Session::get('user')['username'];
+
+        $client = Http::attach('img', $gambar->get(), $gambar->getClientOriginalName())
+            ->post('http://localhost/sipenguji-api/api/mahasiswa', [
+                'nisn' => $request->nisn,
+                'nik' => $request->nik,
+                'nama' => $request->nama,
+                'jurusan' => $request->jurusan,
+                'username' => $username
+            ]);
+
+        if ($client->successful()) {
+            return redirect('/mahasiswa')->with('status', 'Data berhasil disimpan!');
+        } else {
+            $errorCode = $client->status();
+            return redirect('/mahasiswa')->with('error', 'Terdapat kesalahan! Error Code:' . $errorCode);
+        }
     }
 
     /**

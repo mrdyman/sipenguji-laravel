@@ -136,9 +136,4 @@ class AuthController extends Controller
         $request->session()->flush();
         return redirect('/auth');
     }
-
-    public function tes()
-    {
-        //
-    }
 }

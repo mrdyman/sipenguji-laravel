@@ -6,6 +6,8 @@
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <div class="session-success" data-flashsuccess="{{ session('status') }}"></div>
+    <div class="session-error" data-flasherror="{{ session('error') }}"></div>
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid">
@@ -35,30 +37,43 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form class="form-horizontal">
+                <form action="/mahasiswa" method="POST" class="form-horizontal" enctype="multipart/form-data">
+                    @csrf
                     <div class="card-body">
                     <div class="form-group row">
-                        <label for="inputEmail3" class="col-sm-2 col-form-label">Nama</label>
+                        <label for="email" class="col-sm-2 col-form-label">Nama</label>
                         <div class="col-sm-10">
-                        <input type="text" class="form-control" id="inputEmail3" placeholder="Nama Lengkap">
+                        <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama Lengkap">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="inputPassword3" class="col-sm-2 col-form-label">NISN</label>
+                        <label for="nisn" class="col-sm-2 col-form-label">NISN</label>
                         <div class="col-sm-10">
-                        <input type="text" class="form-control" id="inputPassword3" placeholder="Nomor Induk Siswa Nasional">
+                        <input type="text" class="form-control" id="nisn" name="nisn" placeholder="Nomor Induk Siswa Nasional">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="inputPassword3" class="col-sm-2 col-form-label">NIK</label>
+                        <label for="nik" class="col-sm-2 col-form-label">NIK</label>
                         <div class="col-sm-10">
-                        <input type="text" class="form-control" id="inputPassword3" placeholder="NIK">
+                        <input type="text" class="form-control" id="nik" name="nik" placeholder="NIK">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="inputPassword3" class="col-sm-2 col-form-label">Pas Foto</label>
+                        <label for="nik" class="col-sm-2 col-form-label">Jurusan</label>
                         <div class="col-sm-10">
-                        <input type="file" class="file" id="inputPassword3">
+                            <select class="custom-select mb-3" name="jurusan">
+                                <option selected>--- Pilih Jurusan ---</option>
+                                <option value="S1 - Teknik Informatika">S1 - Teknik Informatika</option>
+                                <option value="S1 - Teknik Elektro">S1 - Teknik Elektro</option>
+                                <option value="S1 - Sistem Informasi">S1 - Sistem Informasi</option>
+                                <option value="D3 - Teknik Listrik">D3 - Teknik Listrik</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="foto" class="col-sm-2 col-form-label">Pas Foto</label>
+                        <div class="col-sm-10">
+                        <input type="file" class="form-control-file" name="img" id="img">
                         </div>
                     </div>
 
