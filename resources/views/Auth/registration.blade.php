@@ -63,7 +63,7 @@
         </div>
       </form>
 
-      <a href="{{ url('/auth/login')}}" class="text-center">sudah punya akun? <u>Login</u></a>
+      <a href="{{ url('/auth')}}" class="text-center">sudah punya akun? <u>Login</u></a>
     </div>
     <!-- /.form-box -->
   </div><!-- /.card -->
