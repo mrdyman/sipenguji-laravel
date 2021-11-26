@@ -63,6 +63,9 @@
                                 <td align="center" rowspan="4">
                                     <img src="{{ ('http://localhost/sipenguji-api/assets/img/'. $data['foto']) }}" width="150px" height="200px;">
                                 </td>
+                                <td align="center" rowspan="4">
+                                    {!! QrCode::size(150)->generate($data['nisn']); !!}
+                                </td>
                             </tr>
                             <tr>
                                 <td align="left">
