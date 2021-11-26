@@ -121,8 +121,38 @@ class MahasiswaController extends Controller
         }
     }
 
-    public function biodata()
+    public function cetak()
     {
-        return view('home.mahasiswa.biodata');
+        $username = Session::get('user')['username'];
+        $dataMahasiswa = Http::get('http://localhost/sipenguji-api/api/mahasiswa', [
+            'username' => $username
+        ]);
+        if ($dataMahasiswa->successful()) {
+            if ($dataMahasiswa->json()['status'] == false) {
+                $dataMahasiswa = null;
+            }
+        } else {
+            dd($dataMahasiswa->json());
+        }
+        return view('home.mahasiswa.cetak', ['dataMahasiswa' => $dataMahasiswa]);
+    }
+
+    public function bayar()
+    {
+        $username = Session::get('user')['username'];
+        $payment = Http::put('http://localhost/sipenguji-api/api/payment', [
+            'username' => $username,
+            'status_bayar' => 1
+        ]);
+        if ($payment->successful()) {
+            return redirect('/mahasiswa/cetak')->with('status', 'Pembayaran Sukses!');;
+        } else {
+            dd($payment->json());
+        }
+    }
+
+    public function downloadKartu()
+    {
+        //cetak kartu peserta ujian
     }
 }

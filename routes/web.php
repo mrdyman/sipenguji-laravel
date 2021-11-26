@@ -55,7 +55,13 @@ Route::post('floyd-warshall/calculate', 'FloydWarshallController@calculate');
 Route::post('floyd-warshall/hasil', 'FloydWarshallController@hasil');
 
 //mahasiswa
-Route::get('mahasiswa/biodata', 'MahasiswaController@biodata')->middleware('mahasiswa');;
+Route::get('mahasiswa/biodata', 'MahasiswaController@index')->middleware('mahasiswa');;
+
+Route::get('mahasiswa/cetak', 'MahasiswaController@cetak')->middleware('mahasiswa');;
+
+Route::post('mahasiswa/cetak', 'MahasiswaController@downloadKartu')->middleware('mahasiswa');;
+
+Route::put('mahasiswa/bayar', 'MahasiswaController@bayar')->middleware('mahasiswa');;
 
 Route::resource('mahasiswa', 'MahasiswaController')->middleware('mahasiswa');
 

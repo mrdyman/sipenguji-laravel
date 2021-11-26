@@ -135,6 +135,12 @@
                                 <p>Biodata</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ url('/mahasiswa/cetak') }}" class="nav-link side-title-cetak-kartu">
+                                <i class="nav-icon fas fa-print"></i>
+                                <p>Cetak Kartu</p>
+                            </a>
+                        </li>
                 @endif
                         <a href="{{ url('auth/logout') }}" class="nav-link">
                             <i class="nav-icon fas fa-sign-out-alt text-danger"></i>

@@ -22,4 +22,10 @@ if (title == "SIPENGUJI | Mahasiswa") {
   $(".side-title-polyline").removeClass("active");
   $(".side-title-home").removeClass("active");
   $(".dashboard").removeClass("menu-open");
+} else if (title == "SIPENGUJI | Cetak Kartu") {
+  $(".side-title-cetak-kartu").addClass("active");
+  $(".side-title-floyd-warshall").removeClass("active");
+  $(".side-title-polyline").removeClass("active");
+  $(".side-title-home").removeClass("active");
+  $(".dashboard").removeClass("menu-open");
 }
