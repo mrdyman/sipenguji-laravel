@@ -153,7 +153,6 @@
                                     <tr>
                                         <th>#</th>
                                         <th>Nama</th>
-                                        <th>Jenis Ujian</th>
                                         <th>Jumlah Peserta</th>
                                         <th>Alamat</th>
                                         <th>Aksi</th>
@@ -166,7 +165,6 @@
                                         <td>
                                             {{ $ruangan['nama_ruangan'] }}
                                         </td>
-                                        <td>{{ $ruangan['jenis_ujian'] }}</td>
                                         <td>
                                             {{ $ruangan['jumlah_peserta'] }}
                                         </td>
@@ -203,6 +201,7 @@
                                         <th>Nama Ruangan</th>
                                         <th>Nama Gedung</th>
                                         <th>Jadwal</th>
+                                        <th>Jenis Ujian</th>
                                         <th>Jumlah Peserta</th>
                                         <th>Sesi</th>
                                         <th>Aksi</th>
@@ -217,6 +216,7 @@
                                         </td>
                                         <td>{{ $mJadwal['nama_gedung'] }}</td>
                                         <td>{{ $mJadwal['jadwal'] }}</td>
+                                        <td>{{ $mJadwal['jenis_ujian'] }}</td>
                                         <td>{{ $mJadwal['jumlah_peserta'] }}</td>
                                         <td>{{ $mJadwal['sesi'] }}</td>
                                         <td>
@@ -316,16 +316,6 @@
                                 </div>
                             </div>
                             <div class="form-group row mb-2">
-                                <label for="alamat" class="col-sm-2 col-form-label col-form-label-sm">Jenis Ujian</label>
-                                <div class="col-sm-10">
-                                    <select class="form-control form-control-sm">
-                                        <option>SAINTEK</option>
-                                        <option>SOSHUM</option>
-                                        <option>CAMPURAN</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group row mb-2">
                                 <label for="alamat" class="col-sm-2 col-form-label col-form-label-sm">Alamat</label>
                                 <div class="col-sm-10">
                                     <select name="id_gedung" class="form-control form-control-sm select-ruangan">
@@ -366,16 +356,6 @@
                                 </div>
                             </div>
                             <div class="form-group row mb-2">
-                                <label for="alamat" class="col-sm-2 col-form-label col-form-label-sm">Jenis Ujian</label>
-                                <div class="col-sm-10">
-                                    <select class="form-control form-control-sm" name="jenis_ujian">
-                                        <option>SAINTEK</option>
-                                        <option>SOSHUM</option>
-                                        <option>CAMPURAN</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group row mb-2">
                                 <label for="alamat" class="col-sm-2 col-form-label col-form-label-sm">Alamat</label>
                                 <div class="col-sm-10">
                                     <select name="id_gedung" class="form-control form-control-sm select-ruangan-edit">
@@ -408,7 +388,7 @@
                     <div class="modal-body modal-tambah-polyline">
                         <form method="post" action="{{ url('polyline') }}">
                             @csrf
-                            <div class="form-group row mb-2">
+                            {{-- <div class="form-group row mb-2">
                                 <label for="titik_awal" class="col-sm-2 col-form-label col-form-label-sm">Titik Awal</label>
                                 <div class="col-sm-10">
                                     <select class="form-control form-control-sm titik_awal">
@@ -423,7 +403,7 @@
                                         
                                     </select>
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="form-group row mb-2">
 
                                 <label for="polyline_koordinat">Koordinat</label>

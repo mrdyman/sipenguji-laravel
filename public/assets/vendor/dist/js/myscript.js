@@ -439,6 +439,7 @@ $(".edit-jadwal").on("click", function () {
   $(".modal-edit-jadwal").show();
 
   var id = $(this).attr("id");
+  console.log(id);
   var link = location.href + "jadwal/" + id;
 
   $(".modal-body form").attr("action", link);
@@ -567,7 +568,7 @@ $(".hapus_mahasiswa").on("click", function (e) {
         type: "delete",
         success: function () {
           Swal.fire("Terhapus!", "data mahasiswa berhasil dihapus.", "success");
-          location.href = "/mahasiswa";
+          location.href = "/home/mahasiswa";
         },
       });
     }

@@ -114,7 +114,7 @@ class MahasiswaController extends Controller
         ]);
         if ($client->successful()) {
             if ($client->json(['status'])) {
-                return redirect('/');
+                return redirect('/home/mahasiswa');
             }
         } else {
             return $client->json();

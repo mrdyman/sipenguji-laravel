@@ -51,109 +51,45 @@
             <div class="row">
                 <div class="col-md">
                     <div class="card">
-                        <div class="card-header">
+                        <div class="card-header border-0">
                             <h3 class="card-title">Data Polyline</h3>
-
-                            <div class="card-tools">
-                                <div class="input-group input-group-sm" style="width: 150px;">
-                                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-
-                                    <div class="input-group-append">
-                                        <button type="submit" class="btn btn-default">
-                                            <i class="fas fa-search"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
-                        <!-- /.card-header -->
                         <div class="card-body table-responsive p-0">
-                            <table class="table table-hover text-nowrap">
+                            <table class="table table-striped table-valign-middle">
                                 <thead>
                                     <tr>
                                         <th>#</th>
+                                        <th>Titik Awal</th>
+                                        <th>Titik Tujuan</th>
                                         <th>Jalur</th>
                                         <th>Koordinat</th>
                                         <th>Jarak</th>
-                                        <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach($polyline as $p)
                                     <tr>
-                                        <td>1</td>
-                                        <td>Ekonomi - Teknik</td>
-                                        <td>11-7-2014</td>
-                                        <td>7</td>
+                                        <td>{{ $loop->iteration }}</td>
                                         <td>
-                                            <a href="#" class="badge badge-warning">edit</a>
-                                            <a href="#" class="badge badge-danger">hapus</a>
+                                            {{ $p['titik_awal'] }}
+                                        </td>
+                                        <td>{{ $p['titik_tujuan'] }}</td>
+                                        <td>
+                                            {{ $p['jalur'] }}
+                                        </td>
+                                        <?php if (strlen($p['koordinat']) > 20) { ?>
+                                            <td>{{ substr($p['koordinat'], 0, 19) }}</td>
+                                            <?php } else { ?>
+                                            <td>{{ $p['koordinat'] }}</td>
+                                            <?php } ?>
+                                        <td>
+                                            {{ $p['jarak'] }}
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Ekonomi - Teknik</td>
-                                        <td>11-7-2014</td>
-                                        <td>7</td>
-                                        <td>
-                                            <a href="#" class="badge badge-warning">edit</a>
-                                            <a href="#" class="badge badge-danger">hapus</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Ekonomi - Teknik</td>
-                                        <td>11-7-2014</td>
-                                        <td>7</td>
-                                        <td>
-                                            <a href="#" class="badge badge-warning">edit</a>
-                                            <a href="#" class="badge badge-danger">hapus</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Ekonomi - Teknik</td>
-                                        <td>11-7-2014</td>
-                                        <td>7</td>
-                                        <td>
-                                            <a href="#" class="badge badge-warning">edit</a>
-                                            <a href="#" class="badge badge-danger">hapus</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Ekonomi - Teknik</td>
-                                        <td>11-7-2014</td>
-                                        <td>7</td>
-                                        <td>
-                                            <a href="#" class="badge badge-warning">edit</a>
-                                            <a href="#" class="badge badge-danger">hapus</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Ekonomi - Teknik</td>
-                                        <td>11-7-2014</td>
-                                        <td>7</td>
-                                        <td>
-                                            <a href="#" class="badge badge-warning">edit</a>
-                                            <a href="#" class="badge badge-danger">hapus</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Ekonomi - Teknik</td>
-                                        <td>11-7-2014</td>
-                                        <td>7</td>
-                                        <td>
-                                            <a href="#" class="badge badge-warning">edit</a>
-                                            <a href="#" class="badge badge-danger">hapus</a>
-                                        </td>
-                                    </tr>
-
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
-                        <!-- /.card-body -->
                     </div>
                     <!-- /.card -->
                 </div>

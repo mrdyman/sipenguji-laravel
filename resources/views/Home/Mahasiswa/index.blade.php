@@ -54,7 +54,7 @@
                                         <td>{{ $m['nisn'] }}</td>
                                         <td>{{ $m['nik'] }}</td>
                                         <td>{{ $m['nama'] }}</td>
-                                        <td>{{ 'Added Soon' }}</td>
+                                        <td>{{ $m['nomor_peserta'] }}</td>
                                         <td>
                                             {{-- <a href="#" class="badge badge-warning edit_mahasiswa" id="{{ $m['nisn'] }}">edit</a> --}}
                                             <a href="#" class="badge badge-danger hapus_mahasiswa" id="{{ $m['nisn'] }}">hapus</a>

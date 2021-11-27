@@ -93,7 +93,6 @@ class RuanganController extends Controller
         $client = Http::put('http://localhost/sipenguji-api/api/ruangan', [
             'id' => $id,
             'nama_ruangan' => $request->nama_ruangan,
-            'jenis_ujian' => $request->jenis_ujian, //'this field will be moved to jadwal table'
             'jumlah_peserta' => 'this field will be auto fill by count mahasiswa',
             'latitude' => $request->latitude,
             'longitude' => $request->longitude,

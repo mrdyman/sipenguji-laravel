@@ -63,6 +63,8 @@ Route::post('mahasiswa/cetak', 'MahasiswaController@downloadKartu')->middleware(
 
 Route::put('mahasiswa/bayar', 'MahasiswaController@bayar')->middleware('mahasiswa');;
 
+Route::delete('mahasiswa/{id}', 'MahasiswaController@destroy')->middleware('admin');;
+
 Route::resource('mahasiswa', 'MahasiswaController')->middleware('mahasiswa');
 
 //auth

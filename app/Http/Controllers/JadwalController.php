@@ -39,6 +39,7 @@ class JadwalController extends Controller
     {
         $client = Http::post('http://localhost/sipenguji-api/api/jadwal', [
             'jadwal' => $request->jadwal_ujian,
+            'jenis_ujian' => $request->jenis_ujian_jadwal,
             'sesi' => $request->sesi,
             'id_ruangan' => $request->id_ruangan
         ]);
@@ -90,6 +91,7 @@ class JadwalController extends Controller
             'id' => $id,
             'jadwal' => $request->jadwal_ujian,
             'sesi' => $request->sesi,
+            'jenis_ujian' => $request->jenis_ujian_jadwal,
             'id_ruangan' => $request->id_ruangan
         ]);
 

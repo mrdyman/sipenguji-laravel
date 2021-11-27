@@ -14,7 +14,9 @@ class PolylineController extends Controller
      */
     public function index()
     {
-        return view('home.polyline.index');
+        $polyline = Http::get('http://localhost/sipenguji-api/api/polyline');
+        $dataPolyline = $polyline->json()['data'];
+        return view('home.polyline.index', ['polyline' => $dataPolyline]);
     }
 
     /**
