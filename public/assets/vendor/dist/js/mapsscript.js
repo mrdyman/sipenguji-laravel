@@ -15,6 +15,8 @@ function initMap() {
     let longitude = event.latLng.lng();
     $("#latitude").val(latitude);
     $("#longitude").val(longitude);
+    console.log(latitude);
+    console.log(longitude);
 
     var marker = new google.maps.Marker({
       position: event.latLng,

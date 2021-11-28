@@ -12,6 +12,8 @@ $(document).ready(function () {
     $(".modal-tambah-jadwal").hide();
     $(".modal-edit-jadwal").hide();
     $(".modal-tambah-gedung").show();
+
+    $(".modal-dialog").removeClass("modal-xl");
   });
   // --/ tambah data gedung
 
@@ -35,6 +37,8 @@ $(document).ready(function () {
     $(".modal-edit-jadwal").hide();
 
     $(".edit-modal-gedung").show();
+
+    $(".modal-dialog").removeClass("modal-xl");
 
     var id = $(this).attr("id");
     var link = location.href + "home/" + id;
@@ -66,6 +70,8 @@ $(document).ready(function () {
     $(".modal-edit-jadwal").hide();
 
     $(".modal-tambah-ruangan").show();
+
+    $(".modal-dialog").removeClass("modal-xl");
 
     //get data gedung yang akan dijadikan alamat ruangan
     var link_gedung = location.href + "getgedung";
@@ -131,6 +137,8 @@ $(document).ready(function () {
     $(".modal-tambah-jadwal").hide();
     $(".modal-edit-jadwal").hide();
     $(".modal-edit-ruangan").show();
+
+    $(".modal-dialog").removeClass("modal-xl");
 
     var id = $(this).attr("id");
     var link = location.href + "ruangan/" + id;
@@ -209,6 +217,8 @@ $(document).ready(function () {
     $(".jumlah-ruangan-label").html("Nomor Peserta");
     $(".latitude-label").html("Jadwal");
     $(".longitude-label").html("Lokasi");
+
+    $(".modal-dialog").removeClass("modal-xl");
 
     $("#Nama_modal").prop("disabled", true);
     $("#alamat_modal").prop("disabled", true);
@@ -324,6 +334,8 @@ $(".tambah-polyline").on("click", function () {
 
   $(".modal-tambah-polyline").show();
 
+  $(".modal-dialog").addClass("modal-xl");
+
   //get data ruangan yang akan dijadikan titik awal dan titik tujuan
   var link_ruangan = location.href + "getruangan";
   $.ajax({
@@ -402,6 +414,8 @@ $(".tambah-jadwal").on("click", function () {
   $(".modal-tambah-polyline").hide();
   $(".modal-tambah-jadwal").show();
 
+  $(".modal-dialog").removeClass("modal-xl");
+
   //get data ruangan yang akan dijadikan titik awal dan titik tujuan
   var link_ruangan = location.href + "getruangan";
   $.ajax({
@@ -437,6 +451,8 @@ $(".edit-jadwal").on("click", function () {
   $(".modal-tambah-jadwal").hide();
   $(".edit-modal-gedung").hide();
   $(".modal-edit-jadwal").show();
+
+  $(".modal-dialog").removeClass("modal-xl");
 
   var id = $(this).attr("id");
   console.log(id);
