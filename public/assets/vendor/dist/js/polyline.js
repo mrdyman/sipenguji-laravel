@@ -9,6 +9,7 @@ var srcToDes = [];
 function mapListener() {
   $("#btn-start").on("click", function () {
     if (sambung_titik == false) {
+      displayPolyline();
       sambung_titik = true;
       document.getElementById("btn-start").innerHTML =
         "Processing... Click to STOP";
@@ -110,8 +111,9 @@ function displayPolyline() {
           poly.push(pos);
           var garis = new google.maps.Polyline({
             path: poly,
-            strokeColor: "#FF00AA",
-            strokeWeight: 5,
+            strokeColor: "#DC143C",
+            strokeOpacity: 0.5,
+            strokeWeight: 4,
           });
           garis.setMap(map);
         });
