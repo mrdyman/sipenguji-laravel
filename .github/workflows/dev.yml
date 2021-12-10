@@ -17,5 +17,5 @@ jobs:
           server: mrdyman.com
           username: ${{ secrets.ftp_username }}
           password: ${{ secrets.ftp_password }}
-          local-dir: ../../../sipenguji/
+          local-dir: ../sipenguji/
           server-dir: /public_html/sipenguji/dev/
