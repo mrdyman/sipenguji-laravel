@@ -121,7 +121,7 @@ class AuthController extends Controller
             Session::put('user', $dataUser);
 
             if ($dataUser['role'] == 0) {
-                return redirect('/home')->with('status', 'welcome!');
+                return redirect('/')->with('status', 'welcome!');
             } else {
                 return redirect('mahasiswa')->with('status', 'welcome!');
             }
