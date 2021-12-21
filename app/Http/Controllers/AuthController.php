@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Session;
+use Config;
 
 class AuthController extends Controller
 {
@@ -44,7 +45,8 @@ class AuthController extends Controller
      */
     public function store(Request $request)
     {
-        $client = Http::post('http://localhost/sipenguji-api/api/user/register', [
+        // $client = Http::post('http://localhost/sipenguji-api/api/user/register', [
+        $client = Http::post(config('api_config.api_base_url') . 'user/register', [
             'username' => $request->username,
             'password' => $request->password,
             'role' => 1
@@ -110,7 +112,8 @@ class AuthController extends Controller
             'password' => 'required'
         ]);
 
-        $client = Http::post('http://localhost/sipenguji-api/api/user/login', [
+        // $client = Http::post('http://localhost/sipenguji-api/api/user/login', [
+        $client = Http::post(config('api_config.api_base_url') . 'user/login', [
             'username' => $request->username,
             'password' => $request->password
         ]);

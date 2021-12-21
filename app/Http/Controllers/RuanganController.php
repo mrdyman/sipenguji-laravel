@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Config;
 
 class RuanganController extends Controller
 {
@@ -35,7 +36,8 @@ class RuanganController extends Controller
      */
     public function store(Request $request)
     {
-        $client = Http::post('http://localhost/sipenguji-api/api/ruangan', [
+        // $client = Http::post('http://localhost/sipenguji-api/api/ruangan', [
+        $client = Http::post(config('api_config.api_base_url') . 'ruangan', [
             'nama_ruangan' => $request->nama_ruangan,
             'jumlah_peserta' => 'will change to auto fill by count mahasiswa',
             'latitude' => $request->latitude,
@@ -59,7 +61,8 @@ class RuanganController extends Controller
      */
     public function show($id)
     {
-        $client = Http::get('http://localhost/sipenguji-api/api/ruangan', [
+        // $client = Http::get('http://localhost/sipenguji-api/api/ruangan', [
+        $client = Http::get(config('api_config.api_base_url') . 'ruangan', [
             'id' => $id
         ]);
         if ($client->successful()) {
@@ -90,7 +93,8 @@ class RuanganController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $client = Http::put('http://localhost/sipenguji-api/api/ruangan', [
+        // $client = Http::put('http://localhost/sipenguji-api/api/ruangan', [
+        $client = Http::put(config('api_config.api_base_url') . 'ruangan', [
             'id' => $id,
             'nama_ruangan' => $request->nama_ruangan,
             'jumlah_peserta' => 'this field will be auto fill by count mahasiswa',
@@ -116,7 +120,8 @@ class RuanganController extends Controller
      */
     public function destroy($id)
     {
-        $client = Http::asForm()->delete('http://localhost/sipenguji-api/api/ruangan', [
+        // $client = Http::asForm()->delete('http://localhost/sipenguji-api/api/ruangan', [
+        $client = Http::asForm()->delete(config('api_config.api_base_url') . 'ruangan', [
             'id' => $id
         ]);
         if ($client->successful()) {
@@ -130,7 +135,8 @@ class RuanganController extends Controller
 
     public function getRuangan()
     {
-        $gedung = Http::get('http://localhost/sipenguji-api/api/ruangan');
+        // $gedung = Http::get('http://localhost/sipenguji-api/api/ruangan');
+        $gedung = Http::get(config('api_config.api_base_url') . 'ruangan');
         $response = $gedung->json();
         return $response['data'];
     }

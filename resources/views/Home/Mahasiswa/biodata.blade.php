@@ -68,7 +68,8 @@
                     <div class="form-group row">
                         <label for="foto" class="col-sm-2 col-form-label">Pas Foto</label>
                         <div class="col-sm-10">
-                        <img src="{{ 'http://localhost/sipenguji-api/assets/img/'.$dataMahasiswa['data']['foto'] }}" width="150px" height="190px">
+                        {{-- <img src="{{ 'http://localhost/sipenguji-api/assets/img/'.$dataMahasiswa['data']['foto'] }}" width="150px" height="190px"> --}}
+                        <img src="{{ 'http://mrdyman.com/api/sipenguji/dev/sipenguji-api/assets/img/'.$dataMahasiswa['data']['foto'] }}" width="150px" height="190px">
                         </div>
                     </div>
 

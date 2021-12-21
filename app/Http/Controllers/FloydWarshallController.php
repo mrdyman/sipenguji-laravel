@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Config;
 
 class FloydWarshallController extends Controller
 {
@@ -15,6 +16,7 @@ class FloydWarshallController extends Controller
     public function index()
     {
         $response = Http::get('http://localhost/sipenguji-api/api/floyd');
+        // $response = Http::get(config('api_config.api_base_url') . 'floyd');
         $hasil = $response->json()['data'];
         return view('home.floyd-warshall.index', ['hasil_floyd' => $hasil]);
     }
@@ -83,6 +85,7 @@ class FloydWarshallController extends Controller
     public function destroy($id)
     {
         $client = Http::asForm()->delete('http://localhost/sipenguji-api/api/floyd', [
+            // $client = Http::asForm()->delete(config('api_config.api_base_url') . 'floyd', [
             'id' => $id
         ]);
         if ($client->successful()) {
@@ -104,6 +107,7 @@ class FloydWarshallController extends Controller
     public function calculate(Request $request)
     {
         $response = Http::post('http://localhost/sipenguji-api/api/floyd', [
+            // $response = Http::post(config('api_config.api_base_url') . 'floyd', [
             'titik_awal' => $request->source,
             'titik_tujuan' => $request->destination,
         ]);
@@ -118,6 +122,7 @@ class FloydWarshallController extends Controller
     public function hasil()
     {
         $hasil = Http::get('http://localhost/sipenguji-api/api/floyd/hasil');
+        // $hasil = Http::get(config('api_config.api_base_url') . 'floyd/hasil');
         if ($hasil->successful()) {
             return $hasil->json();
         } else {

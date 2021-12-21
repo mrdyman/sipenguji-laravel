@@ -61,7 +61,7 @@
                                     <font size="4"><b> {{ $data['nomor_peserta'] }}  </b></font>
                                 </td>
                                 <td align="center" rowspan="4">
-                                    <img src="{{ ('http://localhost/sipenguji-api/assets/img/'. $data['foto']) }}" width="150px" height="200px;">
+                                    <img src="{{ ('http://mrdyman.com/api/sipenguji/dev/sipenguji-api/assets/img/'. $data['foto']) }}" width="150px" height="200px;">
                                 </td>
                                 <td align="center" rowspan="4">
                                     {!! QrCode::size(150)->generate($data['nisn']); !!}

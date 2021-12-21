@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Config;
 
 class PolylineController extends Controller
 {
@@ -14,7 +15,8 @@ class PolylineController extends Controller
      */
     public function index()
     {
-        $polyline = Http::get('http://localhost/sipenguji-api/api/polyline');
+        // $polyline = Http::get('http://localhost/sipenguji-api/api/polyline');
+        $polyline = Http::get(config('api_config.api_base_url') . 'polyline');
         $dataPolyline = $polyline->json()['data'];
         return view('home.polyline.index', ['polyline' => $dataPolyline]);
     }
@@ -37,7 +39,8 @@ class PolylineController extends Controller
      */
     public function store(Request $request)
     {
-        $client = Http::post('http://localhost/sipenguji-api/api/polyline', [
+        // $client = Http::post('http://localhost/sipenguji-api/api/polyline', [
+        $client = Http::post(config('api_config.api_base_url') . 'polyline', [
             'titik_awal' => $request->tAwal,
             'titik_tujuan' => $request->tTujuan,
             'jalur' => $request->jalur,
@@ -94,7 +97,8 @@ class PolylineController extends Controller
      */
     public function destroy($id)
     {
-        $client = Http::asForm()->delete('http://localhost/sipenguji-api/api/polyline', [
+        // $client = Http::asForm()->delete('http://localhost/sipenguji-api/api/polyline', [
+        $client = Http::asForm()->delete(config('api_config.api_base_url') . 'polyline', [
             'id' => $id
         ]);
         if ($client->successful()) {
@@ -108,14 +112,16 @@ class PolylineController extends Controller
 
     public function getMarker()
     {
-        $ruangan = Http::get('http://localhost/sipenguji-api/api/ruangan');
+        // $ruangan = Http::get('http://localhost/sipenguji-api/api/ruangan');
+        $ruangan = Http::get(config('api_config.api_base_url') . 'ruangan');
         $response = $ruangan->json();
         return $response['data'];
     }
 
     public function displayPolyline()
     {
-        $client = Http::get('http://localhost/sipenguji-api/api/polyline/display');
+        // $client = Http::get('http://localhost/sipenguji-api/api/polyline/display');
+        $client = Http::get(config('api_config.api_base_url') . 'polyline/display');
 
         if ($client->successful()) {
             return $response = $client->json(['data']);

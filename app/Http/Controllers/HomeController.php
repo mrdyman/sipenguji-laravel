@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Config;
 
 class HomeController extends Controller
 {
@@ -14,18 +15,22 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $gedung = Http::get('http://localhost/sipenguji-api/api/gedung');
+        // $gedung = Http::get('http://localhost/sipenguji-api/api/gedung');
+        $gedung = Http::get(config('api_config.api_base_url') . 'gedung');
         $response = $gedung->json();
         $dataGedung = $response['data'];
 
-        $client = Http::get('http://localhost/sipenguji-api/api/ruangan');
+        // $client = Http::get('http://localhost/sipenguji-api/api/ruangan');
+        $client = Http::get(config('api_config.api_base_url') . 'ruangan');
         $result = $client->json();
         $dataRuangan = $result['data'];
 
-        $jadwal = Http::get('http://localhost/sipenguji-api/api/jadwal');
+        // $jadwal = Http::get('http://localhost/sipenguji-api/api/jadwal');
+        $jadwal = Http::get(config('api_config.api_base_url') . 'jadwal');
         $dataJadwal = $jadwal->json()['data'];
 
-        $polyline = Http::get('http://localhost/sipenguji-api/api/polyline');
+        // $polyline = Http::get('http://localhost/sipenguji-api/api/polyline');
+        $polyline = Http::get(config('api_config.api_base_url') . 'polyline');
         if ($polyline->successful()) {
             $dataPolyline = $polyline->json()['data'];
         }
@@ -53,7 +58,8 @@ class HomeController extends Controller
         $gambar = $request->file('gambar');
 
         $client = Http::attach('img', $gambar->get(), $gambar->getClientOriginalName())
-            ->post('http://localhost/sipenguji-api/api/gedung', [
+            // ->post('http://localhost/sipenguji-api/api/gedung', [
+            ->post(config('api_config.api_base_url') . 'gedung', [
                 'nama' => $request->nama,
                 'alamat' => $request->alamat,
                 'latitude' => 'this field will deleted soon',
@@ -76,7 +82,8 @@ class HomeController extends Controller
      */
     public function show($id)
     {
-        $client = Http::get('http://localhost/sipenguji-api/api/gedung', [
+        // $client = Http::get('http://localhost/sipenguji-api/api/gedung', [
+        $client = Http::get(config('api_config.api_base_url') . 'gedung', [
             'id' => $id
         ]);
         $response = $client->json();
@@ -108,14 +115,16 @@ class HomeController extends Controller
         if ($request->hasFile('gambar') && $request->file('gambar')->isValid()) {
 
             $client = Http::attach('img', $gambar->get(), $gambar->getClientOriginalName())
-                ->post('http://localhost/sipenguji-api/api/gedung', [
+                // ->post('http://localhost/sipenguji-api/api/gedung', [
+                ->post(config('api_config.api_base_url') . 'gedung', [
                     'id' => $id,
                     'nama' => $request->nama,
                     'alamat' => $request->alamat
 
                 ]);
         } else {
-            $client = Http::put('http://localhost/sipenguji-api/api/gedung', [
+            // $client = Http::put('http://localhost/sipenguji-api/api/gedung', [
+            $client = Http::put(config('api_config.api_base_url') . 'gedung', [
                 'id' => $id,
                 'nama' => $request->nama,
                 'alamat' => $request->alamat
@@ -139,7 +148,8 @@ class HomeController extends Controller
      */
     public function destroy($id)
     {
-        $client = Http::asForm()->delete('http://localhost/sipenguji-api/api/gedung', [
+        // $client = Http::asForm()->delete('http://localhost/sipenguji-api/api/gedung', [
+        $client = Http::asForm()->delete(config('api_config.api_base_url') . 'gedung', [
             'id' => $id
         ]);
         if ($client->successful()) {
@@ -153,21 +163,24 @@ class HomeController extends Controller
 
     public function mahasiswa()
     {
-        $response = Http::get('http://localhost/sipenguji-api/api/mahasiswa');
+        // $response = Http::get('http://localhost/sipenguji-api/api/mahasiswa');
+        $response = Http::get(config('api_config.api_base_url') . 'mahasiswa');
         $mahasiswa = $response->json()['data'];
         return view('home.mahasiswa.index', ['mahasiswa' => $mahasiswa]);
     }
 
     public function getMarker()
     {
-        $ruangan = Http::get('http://localhost/sipenguji-api/api/ruangan');
+        // $ruangan = Http::get('http://localhost/sipenguji-api/api/ruangan');
+        $ruangan = Http::get(config('api_config.api_base_url') . 'ruangan');
         $response = $ruangan->json();
         return $response['data'];
     }
 
     public function getGedung()
     {
-        $gedung = Http::get('http://localhost/sipenguji-api/api/gedung');
+        // $gedung = Http::get('http://localhost/sipenguji-api/api/gedung');
+        $gedung = Http::get(config('api_config.api_base_url') . 'gedung');
         $response = $gedung->json();
         return $response['data'];
     }

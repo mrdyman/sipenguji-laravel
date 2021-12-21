@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Config;
 
 class JadwalController extends Controller
 {
@@ -14,7 +15,8 @@ class JadwalController extends Controller
      */
     public function index()
     {
-        $jadwal = Http::get('http://localhost/sipenguji-api/api/jadwal');
+        // $jadwal = Http::get('http://localhost/sipenguji-api/api/jadwal');
+        $jadwal = Http::get(config('api_config.api_base_url') . 'jadwal');
         $dataJadwal = $jadwal->json()['data'];
         echo json_encode($dataJadwal);
     }
@@ -37,7 +39,8 @@ class JadwalController extends Controller
      */
     public function store(Request $request)
     {
-        $client = Http::post('http://localhost/sipenguji-api/api/jadwal', [
+        // $client = Http::post('http://localhost/sipenguji-api/api/jadwal', [
+        $client = Http::post(config('api_config.api_base_url') . 'jadwal', [
             'jadwal' => $request->jadwal_ujian,
             'jenis_ujian' => $request->jenis_ujian_jadwal,
             'sesi' => $request->sesi,
@@ -60,7 +63,8 @@ class JadwalController extends Controller
      */
     public function show($id)
     {
-        $client = Http::get('http://localhost/sipenguji-api/api/jadwal', [
+        // $client = Http::get('http://localhost/sipenguji-api/api/jadwal', [
+        $client = Http::get(config('api_config.api_base_url') . 'jadwal', [
             'id' => $id
         ]);
         $response = $client->json();
@@ -87,7 +91,8 @@ class JadwalController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $client = Http::put('http://localhost/sipenguji-api/api/jadwal', [
+        // $client = Http::put('http://localhost/sipenguji-api/api/jadwal', [
+        $client = Http::put(config('api_config.api_base_url') . 'jadwal', [
             'id' => $id,
             'jadwal' => $request->jadwal_ujian,
             'sesi' => $request->sesi,
@@ -112,7 +117,8 @@ class JadwalController extends Controller
      */
     public function destroy($id)
     {
-        $client = Http::asForm()->delete('http://localhost/sipenguji-api/api/jadwal', [
+        // $client = Http::asForm()->delete('http://localhost/sipenguji-api/api/jadwal', [
+        $client = Http::asForm()->delete(config('api_config.api_base_url') . 'jadwal', [
             'id' => $id
         ]);
         if ($client->successful()) {

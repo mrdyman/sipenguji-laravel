@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Session;
+use Config;
 
 class MahasiswaController extends Controller
 {
@@ -16,7 +17,8 @@ class MahasiswaController extends Controller
     public function index()
     {
         $username = Session::get('user')['username'];
-        $dataMahasiswa = Http::get('http://localhost/sipenguji-api/api/mahasiswa', [
+        // $dataMahasiswa = Http::get('http://localhost/sipenguji-api/api/mahasiswa', [
+        $dataMahasiswa = Http::get(config('api_config.api_base_url') . 'mahasiswa', [
             'username' => $username
         ]);
         if ($dataMahasiswa->successful()) {
@@ -51,7 +53,8 @@ class MahasiswaController extends Controller
         $username = Session::get('user')['username'];
 
         $client = Http::attach('img', $gambar->get(), $gambar->getClientOriginalName())
-            ->post('http://localhost/sipenguji-api/api/mahasiswa', [
+            // ->post('http://localhost/sipenguji-api/api/mahasiswa', [
+            ->post(config('api_config.api_base_url') . 'mahasiswa', [
                 'nisn' => $request->nisn,
                 'nik' => $request->nik,
                 'nama' => $request->nama,
@@ -109,7 +112,8 @@ class MahasiswaController extends Controller
      */
     public function destroy($id)
     {
-        $client = Http::asForm()->delete('http://localhost/sipenguji-api/api/mahasiswa', [
+        // $client = Http::asForm()->delete('http://localhost/sipenguji-api/api/mahasiswa', [
+        $client = Http::asForm()->delete(config('api_config.api_base_url') . 'mahasiswa', [
             'id' => $id
         ]);
         if ($client->successful()) {
@@ -124,7 +128,8 @@ class MahasiswaController extends Controller
     public function cetak()
     {
         $username = Session::get('user')['username'];
-        $dataMahasiswa = Http::get('http://localhost/sipenguji-api/api/mahasiswa', [
+        // $dataMahasiswa = Http::get('http://localhost/sipenguji-api/api/mahasiswa', [
+        $dataMahasiswa = Http::get(config('api_config.api_base_url') . 'mahasiswa', [
             'username' => $username
         ]);
         if ($dataMahasiswa->successful()) {
@@ -140,7 +145,8 @@ class MahasiswaController extends Controller
     public function bayar()
     {
         $username = Session::get('user')['username'];
-        $payment = Http::put('http://localhost/sipenguji-api/api/payment', [
+        // $payment = Http::put('http://localhost/sipenguji-api/api/payment', [
+        $payment = Http::put(config('api_config.api_base_url') . 'payment', [
             'username' => $username,
             'status_bayar' => 1
         ]);
@@ -154,7 +160,8 @@ class MahasiswaController extends Controller
     public function downloadKartu()
     {
         $username = Session::get('user')['username'];
-        $nisn = Http::get('http://localhost/sipenguji-api/api/mahasiswa', [
+        // $nisn = Http::get('http://localhost/sipenguji-api/api/mahasiswa', [
+        $nisn = Http::get(config('api_config.api_base_url') . 'mahasiswa', [
             'username' => $username
         ]);
         if ($nisn->successful()) {
@@ -163,7 +170,8 @@ class MahasiswaController extends Controller
             dd($nisn->json());
         }
 
-        $kartuPeserta = Http::get('http://localhost/sipenguji-api/api/peserta', [
+        // $kartuPeserta = Http::get('http://localhost/sipenguji-api/api/peserta', [
+        $kartuPeserta = Http::get(config('api_config.api_base_url') . 'peserta', [
             'nisn' => $nisn
         ]);
 
