@@ -55,7 +55,7 @@
                             <h3 class="card-title">Data Polyline</h3>
                         </div>
                         <div class="card-body table-responsive p-0">
-                            <table class="table table-striped table-valign-middle">
+                            <table class="table table-striped table-valign-middle" id="table-polyline">
                                 <thead>
                                     <tr>
                                         <th>#</th>

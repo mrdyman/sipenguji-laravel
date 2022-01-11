@@ -187,6 +187,17 @@
     <!-- AdminLTE for demo purposes -->
     <script src="{{ url('assets/vendor') }}/dist/js/demo.js"></script>
 
+    {{-- DataTables --}}
+    <script src="{{ url('assets/vendor') }}/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="{{ url('assets/vendor') }}/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="{{ url('assets/vendor') }}/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="{{ url('assets/vendor') }}/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script src="{{ url('assets/vendor') }}/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="{{ url('assets/vendor') }}/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+    <script src="{{ url('assets/vendor') }}/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+    <script src="{{ url('assets/vendor') }}/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+    <script src="{{ url('assets/vendor') }}/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+
     <!-- script to organize data CRUD -->
     <script src="{{ url('assets/vendor') }}/dist/js/sidebar-script.js"></script>
     <script src="{{ url('assets/vendor') }}/dist/js/myscript.js"></script>
@@ -196,3 +207,52 @@
 </body>
 
 </html>
+<script>
+  $(function () {
+    $('#table-gedung').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+    $('#table-ruangan').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+    $('#table-polyline').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+    $('#table-jadwal').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+    $('#table-rute-terpendek').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>

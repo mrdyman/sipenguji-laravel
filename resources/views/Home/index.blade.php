@@ -53,7 +53,7 @@
                             </div>
                         </div>
                         <div class="card-body table-responsive p-0">
-                            <table class="table table-striped table-valign-middle">
+                            <table class="table table-striped table-valign-middle" id="table-gedung">
                                 <thead>
                                     <tr>
                                         <th>#</th>
@@ -96,7 +96,7 @@
                             </div>
                         </div>
                         <div class="card-body table-responsive p-0">
-                            <table class="table table-striped table-valign-middle">
+                            <table class="table table-striped table-valign-middle" id="table-polyline">
                                 <thead>
                                     <tr>
                                         <th>#</th>
@@ -148,7 +148,7 @@
                             </div>
                         </div>
                         <div class="card-body table-responsive p-0">
-                            <table class="table table-striped table-valign-middle">
+                            <table class="table table-striped table-valign-middle" id="table-ruangan">
                                 <thead>
                                     <tr>
                                         <th>#</th>
@@ -194,7 +194,7 @@
                             </div>
                         </div>
                         <div class="card-body table-responsive p-0">
-                            <table class="table table-striped table-valign-middle">
+                            <table class="table table-striped table-valign-middle" id="table-jadwal">
                                 <thead>
                                     <tr>
                                         <th>#</th>

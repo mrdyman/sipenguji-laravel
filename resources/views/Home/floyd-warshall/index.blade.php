@@ -86,7 +86,7 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body table-responsive p-0">
-                            <table class="table table-hover text-nowrap">
+                            <table class="table table-hover text-nowrap" id="table-rute-terpendek">
                                 <thead>
                                     <tr>
                                         <th>#</th>
