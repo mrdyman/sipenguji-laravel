@@ -69,7 +69,7 @@ function floyd_Warshall() {
       dataType: "json",
       success: function (data) {
         $("#rute").val(data.data.rute);
-        $("#jarak").val(data.data.jarak);
+        $("#jarak").val(data.data.jarak + " Meter");
         drawRoutes();
 
         // buat marker titik awal dan titik tujuan
