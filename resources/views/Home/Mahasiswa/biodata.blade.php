@@ -95,19 +95,19 @@
                     <div class="form-group row">
                         <label for="email" class="col-sm-2 col-form-label">Nama</label>
                         <div class="col-sm-10">
-                        <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama Lengkap">
+                        <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama Lengkap" required>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="nisn" class="col-sm-2 col-form-label">NISN</label>
                         <div class="col-sm-10">
-                        <input type="text" class="form-control" id="nisn" name="nisn" placeholder="Nomor Induk Siswa Nasional">
+                        <input type="number" class="form-control" id="nisn" name="nisn" placeholder="Nomor Induk Siswa Nasional" required>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="nik" class="col-sm-2 col-form-label">NIK</label>
                         <div class="col-sm-10">
-                        <input type="text" class="form-control" id="nik" name="nik" placeholder="NIK">
+                        <input type="number" class="form-control" id="nik" name="nik" placeholder="NIK" required>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -115,17 +115,34 @@
                         <div class="col-sm-10">
                             <select class="custom-select mb-3" name="jurusan">
                                 <option selected>--- Pilih Jurusan ---</option>
+                                <option value="D3 - Teknik Sipil">D3 - Teknik Sipil</option>
+                                <option value="D3 - Teknik Listrik">D3 - Teknik Listrik</option>
+                                <option value="D3 - Teknik Mesin">D3 - Teknik Mesin</option>
+                                <option value="D3 - Teknik Bangunan">D3 - Teknik Bangunan</option>
+                                <option value="S1 - Teknik Sipil">S1 - Teknik Sipil</option>
+                                <option value="S1 - Teknik Geologi">S1 - Teknik Geologi</option>
+                                <option value="S1 - Teknik Arsitektur">S1 - Teknik Arsitektur</option>
+                                <option value="S1 - Teknik Perencanaan Wilayah Kota">S1 - Teknik Perencanaan Wilayah Kota</option>
                                 <option value="S1 - Teknik Informatika">S1 - Teknik Informatika</option>
                                 <option value="S1 - Teknik Elektro">S1 - Teknik Elektro</option>
                                 <option value="S1 - Sistem Informasi">S1 - Sistem Informasi</option>
-                                <option value="D3 - Teknik Listrik">D3 - Teknik Listrik</option>
+                                <option value="S1 - Fisika">S1 - Fisika</option>
+                                <option value="S1 - Kimia">S1 - Kimia</option>
+                                <option value="S1 - Biologi">S1 - Biologi</option>
+                                <option value="S1 - Farmasi">S1 - Farmasi</option>
+                                <option value="S1 - Statistika">S1 - Statistika</option>
+                                <option value="S1 - Kehutanan">S1 - Kehutanan</option>
+                                <option value="S1 - Kedokteran">S1 - Kedokteran</option>
+                                <option value="S1 - Kesehatan Masyarakat">S1 - Kesehatan Masyarakat</option>
+                                <option value="S1 - Ekonomi Pembangunan">S1 - Ekonomi Pembangunan</option>
+                                <option value="S1 - Akuntasi">S1 - Akuntasi</option>
                             </select>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="foto" class="col-sm-2 col-form-label">Pas Foto</label>
                         <div class="col-sm-10">
-                        <input type="file" class="form-control-file" name="img" id="img">
+                        <input type="file" class="form-control-file" name="img" id="img" required>
                         </div>
                     </div>
 
