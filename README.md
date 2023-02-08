@@ -7,7 +7,7 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## SIPENGUJI (Sistem Pemetaan Ruangan Ujian) Mobile App Version - Using Android Studio with Kotlin
+## SIPENGUJI (Sistem Pemetaan Ruangan Ujian) Web Version - Using Laravel
 
 <img src="https://user-images.githubusercontent.com/55882627/211305577-489cc2a1-d0d3-4793-8ffc-92c595064eff.png" width=40% height=40%> <img src="https://user-images.githubusercontent.com/55882627/211305584-ac75eef1-0b11-47e3-abe6-66da274e7db6.png" width=40% height=40%>
 <img src="https://user-images.githubusercontent.com/55882627/211305591-0e3e0c80-983a-48de-8e70-c317c994297b.png" width=40% height=40%>
